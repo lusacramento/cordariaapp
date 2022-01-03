@@ -35,12 +35,14 @@
         </section>
         <div class="col-md-5">
           <aside class="row justify-content-center">
+            <a href="/a-pesquisa/pdf/SACRAMENTO-Luciano-Cordaria-desenvolvimento-de-aplicacao-web-para-violao-e-guitarra.pdf" target="_blank">
             <Box
               :title-text="boxes.downloadResearch.text"
               :schema="boxes.downloadResearch.schema"
               :left-logo="boxes.downloadResearch.leftLogo"
               :right-logo="boxes.downloadResearch.rightLogo"
             />
+            </a>
           </aside>
           <section class="row">
             <div class="col">
@@ -103,9 +105,9 @@ export default {
                   >
                     <div>A Pesquisa<br />Na íntegra</div>
                     <div>&nbsp;|&nbsp;<br />&nbsp;|&nbsp;</div>
-                    <div>em<br /><span class="font-bold">Breve</span></div>
+                    <div>Baixe<br /><span class="font-bold">Aqui</span></div>
                     <div>
-                      <a :href="#">
+                      
                         <img
                           @mouseover="icon.url = imageMouseOver(icon)"
                           @mouseleave="icon.url = imageMouseLeave(icon)"
@@ -113,7 +115,6 @@ export default {
                           :src="icon.url"
                           :alt="icon.altText"
                         />
-                      </a>
                     </div>
                   </div>
                 `,
@@ -134,7 +135,7 @@ export default {
           hid: "titlepesquisa",
           name: "title",
           content:
-            "Cordaria - Desenvolvimento de aplicação web para iniciação à prática do violão e guitarra",
+            "Cordaria - Desenvolvimento de Aplicação Web para Iniciação à Prática do Violão e Guitarra",
         },
         {
           hid: "pesquisa",
@@ -150,8 +151,8 @@ export default {
       ],
       link: [
         {
+          href: "https://cordaria.com.br/a-pesquisa.pdf",
           rel: "canonical",
-          href: "https://cordaria.com.br/a-pesquisa",
         },
       ],
     };

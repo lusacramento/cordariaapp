@@ -6,11 +6,11 @@
           <div id="credits" class="">
             <p class="d-block">
               Developer:
-              <a :href="team.author.link">{{ team.author.name }}</a>
+              <a :href="team.author.link" rel="nofollow" target="_blank">{{ team.author.name }}</a>
 
               <br />
               Designer: &nbsp;
-              <a :href="team.design.link">{{ team.design.name }}</a>
+              <a :href="team.design.link" rel="nofollow" target="_blank">{{ team.design.name }}</a>
             </p>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default {
         },
         design: {
           name: "Gabriel Barreto",
-          link: "mailto:barretodeoliveira@gmail.com",
+          link: "https://mixeldesign.com.br/",
         },
       },
       isDisabledfoot: false,
