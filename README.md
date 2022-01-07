@@ -11,8 +11,20 @@ Sua função é gerar exercícios básicos de digitação com foco na técnica. 
 
 Desta forma, o aluno poderá praticar junto ao auxílio de um “correpetidor” virtual, em qualquer momento e lugar!
 
+## A Pesquisa
+A pesquisa “Cordaria – Desenvolvimento de aplicação web para iniciação à prática do violão e guitarra” surge em um momento delicado da história mundial: a pandemia do Coronavírus – COVID 19. Compelidos a este problema, os profissionais da área da educação, sobre tudo com atuação na área da música enfrentam grandes desafios para conseguir adequar suas atividades para o ensino a distância. Parte deste desafio é devido a escassez de recursos tecnológicos que fogem da metodologia tradicional de ensino, muito das vezes, limitado a vídeos, textos, imagens e de forma repetida. Os problemas se amplificam com usuários oriundos da classe baixa, que tem uma limitação considerável de hardware e/ou baixa conexão de internet.
+
+Utilizando meus conhecimentos de uma década como professor e alguns anos de desenvolvedor web, implementei uma aplicação para prática de exercícios básicos de violão e guitarra baseada em alguns métodos já experienciados por mim enquanto discente e docente. Com isso, Cordaria pretende ampliar as possibilidades metodológicas do ensino prático destes instrumentos num cenário EAD e oferecer uma oportunidade diferente para iniciação da arte do fazer musical, além de incentivar programadores e professores a pensar novas formas de aprendizagem.
+
+## Equipe
+Developer: Lu Sacramento
+Designer: Gabriel Barreto
+
+# Créditos
+Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à Cultura – Lei Aldir Blanc, Governo Federal, Ministério do Turismo e Secretaria Especial de Cultura, através da aprovação no Edital LAB no 14/2020 – “Seleção de Bolsistas para as Áreas Artísticas Técnicas e de Produção Cultural” promovido pela Secretaria de Cultura e Turismo de Minas Gerais – SECULT.
+
 ## Rode sem a necessidade de instalar
-Acesse -> [https://cordaria.com.br](https://cordaria.com.br)
+Acesse -> [https://cordaria.com.br](https://cordaria.com.br) <-
 
 ## Build Setup (Instruções para compilar. Documentação em inglês)
 
