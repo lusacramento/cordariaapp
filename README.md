@@ -24,6 +24,7 @@ Designer: Gabriel Barreto
 Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à Cultura – Lei Aldir Blanc, Governo Federal, Ministério do Turismo e Secretaria Especial de Cultura, através da aprovação no Edital LAB no 14/2020 – “Seleção de Bolsistas para as Áreas Artísticas Técnicas e de Produção Cultural” promovido pela Secretaria de Cultura e Turismo de Minas Gerais – SECULT.
 
 ![Patrocínio](https://gitlab.com/lusacramento/cordaria/-/blob/master/assets/imgs/public-agencies-horizontal-logo.png)
+![Patrocínio](https://cordaria.com.br/_nuxt/img/public-agencies-horizontal-logo.fac1f52.png)
 
 ## Rode sem a necessidade de instalar
 Acesse -> [https://cordaria.com.br](https://cordaria.com.br) <-
