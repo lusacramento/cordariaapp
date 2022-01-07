@@ -1,6 +1,20 @@
 # cordaria
 
-## Build Setup
+## O que é?
+Destinado à pessoas interessadas em iniciar o estudo do violão e guitarra e professores dessa arte, o projeto Cordaria é um aplicativo web com intuito de auxiliar a prática ao instrumento.
+
+Desenvolvido pelo músico e programador Lu Sacramento, o projeto é fruto de uma pesquisa sobre novas metodologias e abordagens ao ensino à distância de música.
+
+## O que Faz?
+
+Sua função é gerar exercícios básicos de digitação com foco na técnica. Tais exercícios vem para auxiliar o educando a executar as notas dadas através de uma escrita de tablatura, cuja a linguagem é de fácil entendimento comparado a escrita de partitura.
+
+Desta forma, o aluno poderá praticar junto ao auxílio de um “correpetidor” virtual, em qualquer momento e lugar!
+
+## Rode sem a necessidade de instalar
+Acesse -> [https://cordaria.com.br](https://cordaria.com.br)
+
+## Build Setup (Instruções para compilar. Documentação em inglês)
 
 ```bash
 # install dependencies
