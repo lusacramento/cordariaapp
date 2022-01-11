@@ -2,6 +2,7 @@
     "cavacoMap": [
         [
             {
+                "baseUrl": "/audios/cavaco/",
                 "note": "C1",
                 "enharmony": "null",
                 "tablature": "metronome-high-bip"

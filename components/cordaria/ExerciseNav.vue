@@ -3,6 +3,22 @@
   <form class="container-fluid form mt-3">
     <div class="row text-center justify-content-center">
       <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+        <div class="select-instrument form-group">
+          <label for="select-instrument-mode" class="form-label"
+            >Instrumento
+          </label>
+          <select
+            id="select-instrument-mode"
+            v-model="instrument"
+            class="form-select justify-content-center"
+          >
+            <option value="guitar">Violão / Guitarra</option>
+            <option value="cavaco">Cavaquinho - Somente Lição Personalizada!</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
         <div class="select-screen form-group">
           <label for="select-screen-mode" class="form-label"
             >Visualização
@@ -187,6 +203,7 @@ export default {
   // eslint-disable-next-line require-await
   data() {
     return {
+      instrument: 'guitar',
       view: 'mobile',
       iconPlay: 'play',
       iconStop: 'stop',
@@ -232,6 +249,7 @@ export default {
         bpm: this.bpm,
         view: this.view,
         loadActiveThePratice: this.loadActiveThePratice,
+        instrument: this.instrument
       })
     },
   },

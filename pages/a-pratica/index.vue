@@ -47,12 +47,15 @@ export default {
     const lessons = await $http.$get('./json/lessons.json')
     const deck = await $http.$get('./json/deck.json')
     const guitar = await $http.$get('./json/guitar.json')
+    const cavaco = await $http.$get('./json/cavaco.json')
     const tips = await $http.$get('./json/tips.json')
 
     return {
       lessons: lessons.lessons,
       deck: deck.deck,
       guitar: guitar.guitarMap,
+      cavaco: cavaco.cavacoMap,
+      instrumentMap: null,
       tips: tips.tips,
 
       suffledDeck: null,
@@ -61,6 +64,7 @@ export default {
       printLoad: '',
 
       // exercises
+      instrument: null,
       lesson: null,
       firstFinger: null,
       stringNumber: '5',
@@ -185,8 +189,21 @@ export default {
       this.score = 'Carregando<br>...'
 
       // getting audios
-      this.getAudios()
+      this.instrument = payload.instrument
 
+      switch (this.instrument) {
+        case 'guitar': 
+          this.instrumentMap = this.guitar         
+          break;
+        case 'cavaco':
+          this.instrumentMap = this.cavaco
+          break
+        default:
+          break;
+      }
+
+      this.getAudios()
+      
       // getting form data
       payload.view === 'mobile'
         ? (this.isMobile = true)
@@ -243,16 +260,17 @@ export default {
     // requiring Audio Files
     getAudios() {
       const urls = {}
-      for (let iString = 0; iString < this.guitar.length; iString++) {
-        const fret = this.guitar[iString]
+      for (let iString = 0; iString < this.instrumentMap.length; iString++) {
+        const fret = this.instrumentMap[iString]
         fret.forEach((element) => {
           urls[element.note] = `${element.tablature}.mp3`
         })
       }
 
+      const instrumentUrl = this.instrumentMap[0][0].baseUrl
       this.sampler = new Tone.Sampler({
         urls,
-        baseUrl: `/audios/mp3-64khz/`, // production mode: relative url, developer mode: absolute url
+        baseUrl: instrumentUrl,
         onload: () => {
           this.isLoaded = true
         },
@@ -262,7 +280,7 @@ export default {
     // requiring notes for generate sequence
     getNotes(fret) {
       let note = null
-      const strings = this.guitar[this.stringNumber]
+      const strings = this.instrumentMap[this.stringNumber]
       const tablature = this.stringNumber + fret
       note = strings[fret][tablature]
       return note
