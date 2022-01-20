@@ -12,8 +12,10 @@
             v-model="instrument"
             class="form-select justify-content-center"
           >
-            <option value="guitar">Violão / Guitarra</option>
-            <option value="cavaco">Cavaquinho - Somente Lição Personalizada!</option>
+            <option value="guitar">Violão</option>
+            <option value="cavaco">Cavaquinho</option>
+            <option disabled value="guitar2">Guitarra (em desenvolvimento)</option>
+            <option disabled value="bass">Baixo (em desenvolvimento)</option>
           </select>
         </div>
       </div>
@@ -84,14 +86,38 @@
             class="form-select"
             :disabled="isReadtoLoad"
           >
-            <option value="1">Corda 1 (Mi4)</option>
-            <option value="2">Corda 2 (Si3)</option>
-            <option value="3">Corda 3 (Sol3)</option>
-            <option value="4">Corda 4 (Ré3)</option>
-            <option value="5">Corda 5 (Lá2)</option>
-            <option value="6">Corda 6 (Mi2)</option>
-            <option value="allUp">Todas (ascendente)</option>
-            <option value="allDown">Todas (descendente)</option>
+            <template v-if="instrument === 'guitar'">
+              <option value="1">Corda 1 (Mi4)</option>
+              <option value="2">Corda 2 (Si3)</option>
+              <option value="3">Corda 3 (Sol3)</option>
+              <option value="4">Corda 4 (Ré3)</option>
+              <option value="5">Corda 5 (Lá2)</option>
+              <option value="6">Corda 6 (Mi2)</option>
+              <option value="allUp">Todas (ascendente)</option>
+              <option value="allDown">Todas (descendente)</option>
+            </template>
+            <template v-else-if="instrument === 'cavaco'">
+              <option value="1">Corda 1 (Ré5)</option>
+              <option value="2">Corda 2 (Si4)</option>
+              <option value="3">Corda 3 (Sol4)</option>
+              <option value="4">Corda 4 (Ré4)</option>
+            </template>
+            <template v-else-if="instrument === 'guitar2'">
+              <option value="1">Corda 1 (Mi4)</option>
+              <option value="2">Corda 2 (Si3)</option>
+              <option value="3">Corda 3 (Sol3)</option>
+              <option value="4">Corda 4 (Ré3)</option>
+              <option value="5">Corda 5 (Lá2)</option>
+              <option value="6">Corda 6 (Mi2)</option>
+              <option value="allUp">Todas (ascendente)</option>
+              <option value="allDown">Todas (descendente)</option>
+            </template>
+            <template v-else-if="instrument === 'bass'">
+              <option value="1">Corda 1 (Sol2)</option>
+              <option value="2">Corda 2 (Ré2)</option>
+              <option value="3">Corda 3 (Lá1)</option>
+              <option value="4">Corda 4 (Mi1)</option>
+            </template>
           </select>
         </div>
       </div>
@@ -138,12 +164,7 @@
                 <button
                   v-if="isVisibleButtonStop"
                   type="button"
-                  class="
-                    btn btn-danger btn-controls
-                    d-flex
-                    align-items-center
-                    justify-content-center
-                  "
+                  class="btn btn-danger btn-controls d-flex align-items-center justify-content-center"
                   @click="stop(true)"
                 >
                   <font-awesome-icon class="fa fa-code stop" :icon="iconStop" />
@@ -151,12 +172,7 @@
                 <button
                   v-if="isVisibleButtonPlay"
                   type="button"
-                  class="
-                    btn btn-success btn-controls
-                    d-flex
-                    align-items-center
-                    justify-content-center
-                  "
+                  class="btn btn-success btn-controls d-flex align-items-center justify-content-center"
                   @click="sendProps"
                 >
                   <font-awesome-icon class="fa fa-code" :icon="iconPlay" />
@@ -249,7 +265,7 @@ export default {
         bpm: this.bpm,
         view: this.view,
         loadActiveThePratice: this.loadActiveThePratice,
-        instrument: this.instrument
+        instrument: this.instrument,
       })
     },
   },
