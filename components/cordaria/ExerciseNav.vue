@@ -15,7 +15,7 @@
             <option value="guitar">Violão</option>
             <option value="cavaco">Cavaquinho</option>
             <option disabled value="guitar2">Guitarra (em desenvolvimento)</option>
-            <option disabled value="bass">Baixo (em desenvolvimento)</option>
+            <option value="bass">Baixo</option>
           </select>
         </div>
       </div>

@@ -48,6 +48,8 @@ export default {
     const deck = await $http.$get('./json/deck.json')
     const guitar = await $http.$get('./json/guitar.json')
     const cavaco = await $http.$get('./json/cavaco.json')
+    const bass = await $http.$get('./json/bass.json')
+    
     const tips = await $http.$get('./json/tips.json')
 
     return {
@@ -55,6 +57,7 @@ export default {
       deck: deck.deck,
       guitar: guitar.guitarMap,
       cavaco: cavaco.cavacoMap,
+      bass: bass.bassMap,
       instrumentMap: null,
       tips: tips.tips,
 
@@ -197,7 +200,10 @@ export default {
           break;
         case 'cavaco':
           this.instrumentMap = this.cavaco
-          break
+          break;
+        case 'bass':
+          this.instrumentMap = this.bass
+          break;
         default:
           break;
       }
