@@ -98,6 +98,7 @@ export default {
       },
     };
   },
+  
   head() {
     return {
       title: "Cordaria - O Tutorial",

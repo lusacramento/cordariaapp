@@ -114,7 +114,7 @@ export default {
         {
           hid: "projetokeys",
           name: "keywords",
-          content: "pesquisa, prática, música, projeto, violão, guitarra",
+          content: "pesquisa, prática, música, projeto, violão, guitarra, método",
         },
       ],
       link: [
