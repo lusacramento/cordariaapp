@@ -20,8 +20,8 @@ export default {
   components: { Footer, Nav },
   data() {
     return {
-      baseUrl: "https://cordaria.com.br/",
-      isIndex: true,
+      baseUrl: "https://beta.cordaria.com.br/",
+      isIndex: false,
       indexed: { hid: "null", name: "robots", content: "all" },
       noIndexed: { hid: "null", name: "robots", content: "noindex" },
       metaIndexed: {},
