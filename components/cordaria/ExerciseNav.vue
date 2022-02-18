@@ -2,7 +2,7 @@
 <template>
   <form class="container-fluid form mt-3">
     <div class="row text-center justify-content-center">
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-screen form-group">
           <label for="select-screen-mode" class="form-label">Visualização </label>
           <select
@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-lesson form-group">
           <label for="select-lesson" class="form-label">Lições</label>
           <br />
@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-first-finger form-group">
           <label for="select-first-finger" class="form-label">Primeiro Dedo</label>
           <br />
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-string form-group">
           <label for="select-string" class="form-label"> Corda</label>
           <br />
@@ -74,7 +74,7 @@
           </select>
         </div>
       </div>
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-andamento form-group">
           <label for="tempo" class="form-label">Andamento</label>
           <br />
@@ -106,7 +106,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center control">
+      <div class="col-12 control">
         <div class="row form-group">
           <div class="col">
             <div class="row">
@@ -141,11 +141,11 @@
 </template>
 
 <script>
-import Score from "@/components/cordaria/Score";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import Score from "@/components/cordaria/Score";
 
 library.add([faPlay, faStop]);
 
@@ -182,6 +182,7 @@ export default {
       bpm: 40,
       loadActiveThePratice: true,
       isReadtoLoad: true,
+      isEnabledMenu: false
     };
   },
 
@@ -218,6 +219,7 @@ export default {
         bpm: this.bpm,
         view: this.view,
         loadActiveThePratice: this.loadActiveThePratice,
+        isEnabledMenu: this.isEnabledMenu,
       });
     },
   },

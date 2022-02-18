@@ -1,28 +1,42 @@
 <template>
   <div class="cordaria container-fluid justify-content-center">
- <div>
-    <b-button v-b-toggle.sidebar-1>Menu</b-button>
-    <b-sidebar id="sidebar-1" title="Sidebar" shadow>
-      <div class="px-3 py-2">
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-          in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        </p>
-        <b-img src="https://picsum.photos/500/500/?image=54" fluid thumbnail></b-img>
+    <div class="menu">
+      <div>
+        <b-button
+          v-b-toggle.sidebar-menu
+          >Menu</b-button
+        >
+        <b-sidebar
+          id="sidebar-menu"
+          title="Menu"
+          shadow
+          :visible="isEnabledMenu"
+          
+        >
+          <div class="px-3 py-2">
+            <ExerciseNav
+              :lessons="lessons"
+              :is-visible-button-play="isVisibleButtonPlay"
+              :is-visible-button-stop="isVisibleButtonStop"
+              :stop="stop"
+              :score="score"
+              @props="load"
+            />
+          </div>
+        </b-sidebar>
       </div>
-    </b-sidebar>
-  </div>
+    </div>
     <div class="exercise-nav">
       <div class="row layer-top-exercise layer-top">
         <div class="col">
-          <ExerciseNav
+          <!-- <ExerciseNav
             :lessons="lessons"
             :is-visible-button-play="isVisibleButtonPlay"
             :is-visible-button-stop="isVisibleButtonStop"
             :stop="stop"
             :score="score"
             @props="load"
-          />
+          /> -->
         </div>
         <div class="row offcanvas-menu">
           <div class="col">teste</div>
@@ -56,7 +70,11 @@ import ExerciseNav from '@/components/cordaria/ExerciseNav'
 import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
 
 export default {
-  components: { ExerciseNav, ExerciseScreen, Tips },
+  components: {
+    ExerciseNav,
+    ExerciseScreen,
+    Tips,
+  },
   async asyncData({ $http }) {
     const lessons = await $http.$get('./json/lessons.json')
     const deck = await $http.$get('./json/deck.json')
@@ -113,6 +131,9 @@ export default {
       fadeOutValue: 10,
 
       isStopSequence: false,
+
+      // Menu
+      isEnabledMenu: true,
     }
   },
   data() {
@@ -189,7 +210,14 @@ export default {
     this.stop(true)
   },
   methods: {
+    showMenu() {
+      this.isCollapse = !this.isCollapse
+    },
     load(payload) {
+      // hide Menu 
+      this.isEnabledMenu = payload.isEnabledMenu
+
+      // starting Audio library 
       if (Tone.context.state !== 'running') {
         Tone.context.resume()
       }
@@ -441,21 +469,28 @@ export default {
 
 <style>
 .bg-exercise-screen {
-  background-color: #1d1e28;
+  background-color: var(--bg-nav);
+}
+
+#sidebar-menu {
+  background-color: var(--bg-layer-top) !important;
+  font-family: 'Encode Sans';
+  font-weight: var(--font-semi-bold);
 }
 
 .exercise-nav {
-  /* border: 1px solid white; */
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .exercise-screen {
-  /* border: 1px solid white; */
-  /* background-color: rgba(255, 255, 255, 0.1); */
   justify-content: center;
 }
+  
+.sidebar-menu-enabled {
+  display: flex !important;
+}
 
-/*
-.exercise-screen {
-} */
+.sidebarMenuDisabled {
+  display: none !important;
+}
 </style>
