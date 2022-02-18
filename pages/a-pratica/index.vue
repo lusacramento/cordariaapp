@@ -1,45 +1,30 @@
 <template>
-  <div class="cordaria container-fluid justify-content-center">
-    <div class="menu">
-      <div>
-        <b-button
-          v-b-toggle.sidebar-menu
-          >Menu</b-button
-        >
-        <b-sidebar
-          id="sidebar-menu"
-          title="Menu"
-          shadow
-          :visible="isEnabledMenu"
-          
-        >
-          <div class="px-3 py-2">
-            <ExerciseNav
-              :lessons="lessons"
-              :is-visible-button-play="isVisibleButtonPlay"
-              :is-visible-button-stop="isVisibleButtonStop"
-              :stop="stop"
-              :score="score"
-              @props="load"
-            />
-          </div>
-        </b-sidebar>
-      </div>
-    </div>
-    <div class="exercise-nav">
-      <div class="row layer-top-exercise layer-top">
+  <div id="the-pratice" class="cordaria">
+    <div class="exercise-nav container-fluid">
+      <div class="row text-center layer-top align-items-center">
         <div class="col">
-          <!-- <ExerciseNav
-            :lessons="lessons"
-            :is-visible-button-play="isVisibleButtonPlay"
-            :is-visible-button-stop="isVisibleButtonStop"
-            :stop="stop"
-            :score="score"
-            @props="load"
-          /> -->
-        </div>
-        <div class="row offcanvas-menu">
-          <div class="col">teste</div>
+          <div class="mt-3 mb-4 d-flex justify-content-center align-items-center">
+          <h1 class="title mt-3 mb-4">{{ title }}</h1>
+          <button v-b-toggle.sidebar-menu>Menu</button>
+          <b-sidebar
+            id="sidebar-menu"
+            title="Menu"
+            shadow
+            :visible="isEnabledMenu"
+          >
+            <div class="px-3 py-2">
+              <ExerciseNav
+                :lessons="lessons"
+                :is-visible-button-play="isVisibleButtonPlay"
+                :is-visible-button-stop="isVisibleButtonStop"
+                :stop="stop"
+                :score="score"
+                @props="load"
+              />
+            </div>
+          </b-sidebar>
+
+          </div>
         </div>
       </div>
       <div class="row justify-content-center bg-exercise-screen">
@@ -214,10 +199,10 @@ export default {
       this.isCollapse = !this.isCollapse
     },
     load(payload) {
-      // hide Menu 
+      // hide Menu
       this.isEnabledMenu = payload.isEnabledMenu
 
-      // starting Audio library 
+      // starting Audio library
       if (Tone.context.state !== 'running') {
         Tone.context.resume()
       }
@@ -467,7 +452,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+button {
+  width: 45px;
+  height: 45px;
+}
+
 .bg-exercise-screen {
   background-color: var(--bg-nav);
 }
@@ -485,7 +475,7 @@ export default {
 .exercise-screen {
   justify-content: center;
 }
-  
+
 .sidebar-menu-enabled {
   display: flex !important;
 }
