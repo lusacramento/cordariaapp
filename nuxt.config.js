@@ -79,13 +79,13 @@ export default {
     [
       '@nuxtjs/robots',
       {
-        sitemap: 'https://cordaria.com.br/sitemap.xml',
+        sitemap: 'https://beta.cordaria.com.br/sitemap.xml',
       },
     ],
     [
       '@nuxtjs/sitemap',
       {
-        hostname: 'https://cordaria.com.br',
+        hostname: 'https://beta.cordaria.com.br',
         gzip: true,
       },
     ],

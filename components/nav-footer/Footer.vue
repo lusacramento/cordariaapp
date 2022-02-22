@@ -59,7 +59,7 @@ export default {
         },
       },
       isDisabledfoot: false,
-      version: "1.1.2 - 2021",
+      version: "beta 2.0.0 - 2022",
     };
   },
 };
@@ -99,4 +99,8 @@ export default {
     text-align: center !important;
   }
 }
+
+/* img {
+  background-color: transparent;
+} */
 </style>
