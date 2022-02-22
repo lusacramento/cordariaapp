@@ -2,6 +2,7 @@
     "guitarMap": [
         [
             {
+                "baseUrl": "/audios/guitar/",
                 "note": "C1",
                 "enharmony": "null",
                 "tablature": "metronome-high-bip"

@@ -24,8 +24,25 @@ import CardFragment from "./CardFragment";
 
 export default {
   components: { CardFragment },
+  props: {
+    card: {
+      type: Object,
+      default: null
+    }, 
+    key: {
+      type: String,
+      default: null
+      },
+      id: {
+        type: String,
+        default: null,
+      },
+      fragment: {
+        type: Number,
+        default: null
+        },
+  },
 
-  props: ["card", "key", "id", "fragment"],
 
   data() {
     return {

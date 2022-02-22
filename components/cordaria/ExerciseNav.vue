@@ -3,8 +3,28 @@
   <form class="container-fluid form mt-3">
     <div class="row text-center justify-content-center">
       <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+        <div class="select-instrument form-group">
+          <label for="select-instrument-mode" class="form-label"
+            >Instrumento
+          </label>
+          <select
+            id="select-instrument-mode"
+            v-model="instrument"
+            class="form-select justify-content-center"
+          >
+            <option value="guitar">Violão</option>
+            <option value="cavaco">Cavaquinho</option>
+            <option disabled value="guitar2">Guitarra (em desenvolvimento)</option>
+            <option value="bass">Baixo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
         <div class="select-screen form-group">
-          <label for="select-screen-mode" class="form-label">Visualização </label>
+          <label for="select-screen-mode" class="form-label"
+            >Visualização
+          </label>
           <select
             id="select-screen-mode"
             v-model="view"
@@ -35,7 +55,9 @@
 
       <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
         <div class="select-first-finger form-group">
-          <label for="select-first-finger" class="form-label">Primeiro Dedo</label>
+          <label for="select-first-finger" class="form-label"
+            >Primeiro Dedo</label
+          >
           <br />
           <select
             id="select-first-finger"
@@ -64,13 +86,38 @@
             class="form-select"
             :disabled="isReadtoLoad"
           >
-            <option value="1">Corda 1 (Mi4)</option>
-            <option value="2">Corda 2 (Si3)</option>
-            <option value="3">Corda 3 (Sol3)</option>
-            <option value="4">Corda 4 (Ré3)</option>
-            <option value="5">Corda 5 (Lá2)</option>
-            <option value="6">Corda 6 (Mi2)</option>
-            <!-- <option value="all">Todas</option> avaliable for future versions -->
+            <template v-if="instrument === 'guitar'">
+              <option value="1">Corda 1 (Mi4)</option>
+              <option value="2">Corda 2 (Si3)</option>
+              <option value="3">Corda 3 (Sol3)</option>
+              <option value="4">Corda 4 (Ré3)</option>
+              <option value="5">Corda 5 (Lá2)</option>
+              <option value="6">Corda 6 (Mi2)</option>
+              <option value="allUp">Todas (ascendente)</option>
+              <option value="allDown">Todas (descendente)</option>
+            </template>
+            <template v-else-if="instrument === 'cavaco'">
+              <option value="1">Corda 1 (Ré5)</option>
+              <option value="2">Corda 2 (Si4)</option>
+              <option value="3">Corda 3 (Sol4)</option>
+              <option value="4">Corda 4 (Ré4)</option>
+            </template>
+            <template v-else-if="instrument === 'guitar2'">
+              <option value="1">Corda 1 (Mi4)</option>
+              <option value="2">Corda 2 (Si3)</option>
+              <option value="3">Corda 3 (Sol3)</option>
+              <option value="4">Corda 4 (Ré3)</option>
+              <option value="5">Corda 5 (Lá2)</option>
+              <option value="6">Corda 6 (Mi2)</option>
+              <option value="allUp">Todas (ascendente)</option>
+              <option value="allDown">Todas (descendente)</option>
+            </template>
+            <template v-else-if="instrument === 'bass'">
+              <option value="1">Corda 1 (Sol2)</option>
+              <option value="2">Corda 2 (Ré2)</option>
+              <option value="3">Corda 3 (Lá1)</option>
+              <option value="4">Corda 4 (Mi1)</option>
+            </template>
           </select>
         </div>
       </div>
@@ -141,13 +188,12 @@
 </template>
 
 <script>
-import Score from "@/components/cordaria/Score";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPlay, faStop } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Score from '@/components/cordaria/Score'
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-library.add([faPlay, faStop]);
+library.add([faPlay, faStop])
 
 export default {
   components: { FontAwesomeIcon, Score },
@@ -158,70 +204,72 @@ export default {
     lessons: {
       type: Array,
       default() {
-        return [];
+        return []
       },
     },
     stop: {
       type: Function,
       default() {
-        return {};
+        return {}
       },
     },
-    score: { type: String, default: "" },
+    score: { type: String, default: '' },
   },
 
   // eslint-disable-next-line require-await
   data() {
     return {
-      view: "mobile",
-      iconPlay: "play",
-      iconStop: "stop",
+      instrument: 'guitar',
+      view: 'mobile',
+      iconPlay: 'play',
+      iconStop: 'stop',
       lesson: 1,
       firstFinger: 0,
       stringNumber: 1,
       bpm: 40,
       loadActiveThePratice: true,
       isReadtoLoad: true,
-    };
+    }
   },
 
   watch: {
     lesson(newLesson) {
-      this.firstFinger = this.lessons[newLesson].firstFinger;
-      this.stringNumber = this.lessons[newLesson].stringNumber;
-      this.bpm = this.lessons[newLesson].bpm;
+      this.firstFinger = this.lessons[newLesson].firstFinger
+      this.stringNumber = this.lessons[newLesson].stringNumber
+      this.bpm = this.lessons[newLesson].bpm
 
-      newLesson === 0 ? (this.isReadtoLoad = false) : (this.isReadtoLoad = true);
+      newLesson === 0 ? (this.isReadtoLoad = false) : (this.isReadtoLoad = true)
 
-      return newLesson;
+      return newLesson
     },
 
     firstFinger(newFirstFinger) {
-      return newFirstFinger;
+      return newFirstFinger
     },
 
     stringNumber(newStringNumber) {
-      return newStringNumber;
+      return newStringNumber
     },
 
     bpm(newBpm) {
-      return newBpm;
+      return newBpm
     },
   },
 
   methods: {
     sendProps() {
-      this.$emit("props", {
+      this.$emit('props', {
         lesson: this.lesson,
         firstFinger: this.firstFinger,
         stringNumber: this.stringNumber,
         bpm: this.bpm,
         view: this.view,
         loadActiveThePratice: this.loadActiveThePratice,
-      });
+        instrument: this.instrument,
+      })
     },
   },
-};
+}
 </script>
 
 <style>
@@ -236,13 +284,13 @@ input:disabled {
 }
 
 label {
-  font-family: "Encode Sans";
+  font-family: 'Encode Sans';
   font-weight: var(--font-regular);
   font-size: 0.9em;
 }
 select.form-select,
 input.form-number {
-  font-family: "Encode Sans";
+  font-family: 'Encode Sans';
   font-weight: var(--font-semi-bold);
 
   background-color: #1a1b24;
