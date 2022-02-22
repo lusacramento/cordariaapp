@@ -5,7 +5,7 @@ on:
     tags:
       - latest-stable-version
 
-name: 🚀 Deploy on push in main-domain
+name: 🚀 Deploy App on push in main-domain
 jobs:
   deploy:
     name: 🎉 Deploy
