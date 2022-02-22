@@ -35,11 +35,11 @@
 
 <script>
 import Tips from "@/components/cordaria/Tips";
+import ExerciseNav from "@/components/cordaria/ExerciseNav";
+import ExerciseScreen from "@/components/cordaria/ExerciseScreen";
 
 import * as Tone from "tone"; // to play the audios
 
-import ExerciseNav from "@/components/cordaria/ExerciseNav";
-import ExerciseScreen from "@/components/cordaria/ExerciseScreen";
 
 export default {
   components: { ExerciseNav, ExerciseScreen, Tips },
