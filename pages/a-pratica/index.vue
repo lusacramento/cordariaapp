@@ -48,18 +48,10 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 
 import Tips from "@/components/cordaria/Tips";
 import ExerciseNav from "@/components/cordaria/ExerciseNav";
 import ExerciseScreen from "@/components/cordaria/ExerciseScreen";
-=======
-import * as Tone from 'tone' // to play the audios
-import Tips from '@/components/cordaria/Tips'
-
-import ExerciseNav from '@/components/cordaria/ExerciseNav'
-import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
->>>>>>> display
 
 import * as Tone from 'tone' // to play the audios
 
@@ -73,12 +65,9 @@ export default {
     const lessons = await $http.$get('./json/lessons.json')
     const deck = await $http.$get('./json/deck.json')
     const guitar = await $http.$get('./json/guitar.json')
-<<<<<<< HEAD
     const cavaco = await $http.$get('./json/cavaco.json')
     const bass = await $http.$get('./json/bass.json')
     
-=======
->>>>>>> display
     const tips = await $http.$get('./json/tips.json')
 
     return {
@@ -137,12 +126,9 @@ export default {
       fadeOutValue: 10,
 
       isStopSequence: false,
-<<<<<<< HEAD
-=======
 
       // Menu
       isEnabledMenu: true,
->>>>>>> display
     }
   },
   data() {
@@ -223,13 +209,10 @@ export default {
       this.isCollapse = !this.isCollapse
     },
     load(payload) {
-<<<<<<< HEAD
-=======
       // hide Menu
       this.isEnabledMenu = payload.isEnabledMenu
 
       // starting Audio library
->>>>>>> display
       if (Tone.context.state !== 'running') {
         Tone.context.resume()
       }
@@ -237,7 +220,6 @@ export default {
       this.score = 'Carregando<br>...'
 
       // getting audios
-<<<<<<< HEAD
       this.instrument = payload.instrument
 
       switch (this.instrument) {
@@ -253,9 +235,6 @@ export default {
         default:
           break;
       }
-=======
-      this.getAudios()
->>>>>>> display
 
       this.getAudios()
       
@@ -315,13 +294,8 @@ export default {
     // requiring Audio Files
     getAudios() {
       const urls = {}
-<<<<<<< HEAD
       for (let iString = 0; iString < this.instrumentMap.length; iString++) {
         const fret = this.instrumentMap[iString]
-=======
-      for (let iString = 0; iString < this.guitar.length; iString++) {
-        const fret = this.guitar[iString]
->>>>>>> display
         fret.forEach((element) => {
           urls[element.note] = `${element.tablature}.mp3`
         })
@@ -340,7 +314,6 @@ export default {
     // requiring notes for generate sequence
     getNotes(fret) {
       let note = null
-<<<<<<< HEAD
       const strings = this.instrumentMap[this.stringNumber]
       const tablature = this.stringNumber + fret
       note = strings[fret][tablature]
@@ -360,17 +333,10 @@ export default {
       if (this.stringNumber === 6) {
         this.direction = 'down'
       }
-=======
-      const strings = this.guitar[this.stringNumber]
-      const tablature = this.stringNumber + fret
-      note = strings[fret][tablature]
-      return note
->>>>>>> display
     },
 
     // generating audio sequence
     generateSequence() {
-<<<<<<< HEAD
       switch (this.stringNumber) {
         case 'allUp': 
           this.stringNumber = 6
@@ -396,23 +362,11 @@ export default {
             notes.push(this.getNotes(fragment))
           })
         }
-=======
-      const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
-      this.suffledDeck.forEach((card) => {
-        card.fragments.forEach((fragments) => {
-          const fragment = fragments.fragment
-          notes.push(this.getNotes(fragment))
-        })
->>>>>>> display
       })
 
       const seq = new Tone.Sequence(
         (time, note) => {
           this.sampler.triggerAttackRelease(note, this.release, time)
-<<<<<<< HEAD
-=======
-          // console.log(`nota tocada:"${note}`);
->>>>>>> display
         },
         notes,
         '4n'

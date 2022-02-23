@@ -192,22 +192,12 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlay, faStop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Score from '@/components/cordaria/Score'
 
 library.add([faPlay, faStop])
-=======
-
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import Score from "@/components/cordaria/Score";
-
-library.add([faPlay, faStop]);
->>>>>>> display
 
 export default {
   components: { FontAwesomeIcon, Score },
@@ -243,12 +233,8 @@ export default {
       bpm: 40,
       loadActiveThePratice: true,
       isReadtoLoad: true,
-<<<<<<< HEAD
-    }
-=======
       isEnabledMenu: false
     };
->>>>>>> display
   },
 
   watch: {
@@ -284,13 +270,9 @@ export default {
         bpm: this.bpm,
         view: this.view,
         loadActiveThePratice: this.loadActiveThePratice,
-<<<<<<< HEAD
         instrument: this.instrument,
-      })
-=======
         isEnabledMenu: this.isEnabledMenu,
       });
->>>>>>> display
     },
   },
 }
