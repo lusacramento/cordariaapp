@@ -1,16 +1,30 @@
 <template>
-  <div class="cordaria container-fluid justify-content-center">
-    <div class="exercise-nav">
-      <div class="row layer-top-exercise layer-top">
+  <div id="the-pratice" class="cordaria">
+    <div class="exercise-nav container-fluid">
+      <div class="row text-center layer-top align-items-center">
         <div class="col">
-          <ExerciseNav
-            :lessons="lessons"
-            :is-visible-button-play="isVisibleButtonPlay"
-            :is-visible-button-stop="isVisibleButtonStop"
-            :stop="stop"
-            :score="score"
-            @props="load"
-          />
+          <div class="mt-3 mb-4 d-flex justify-content-center align-items-center">
+          <h1 class="title mt-3 mb-4">{{ title }}</h1>
+          <button v-b-toggle.sidebar-menu>Menu</button>
+          <b-sidebar
+            id="sidebar-menu"
+            title="Menu"
+            shadow
+            :visible="isEnabledMenu"
+          >
+            <div class="px-3 py-2">
+              <ExerciseNav
+                :lessons="lessons"
+                :is-visible-button-play="isVisibleButtonPlay"
+                :is-visible-button-stop="isVisibleButtonStop"
+                :stop="stop"
+                :score="score"
+                @props="load"
+              />
+            </div>
+          </b-sidebar>
+
+          </div>
         </div>
       </div>
       <div class="row justify-content-center bg-exercise-screen">
@@ -34,22 +48,37 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 
 import Tips from "@/components/cordaria/Tips";
 import ExerciseNav from "@/components/cordaria/ExerciseNav";
 import ExerciseScreen from "@/components/cordaria/ExerciseScreen";
+=======
+import * as Tone from 'tone' // to play the audios
+import Tips from '@/components/cordaria/Tips'
+
+import ExerciseNav from '@/components/cordaria/ExerciseNav'
+import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
+>>>>>>> display
 
 import * as Tone from 'tone' // to play the audios
 
 export default {
-  components: { ExerciseNav, ExerciseScreen, Tips },
+  components: {
+    ExerciseNav,
+    ExerciseScreen,
+    Tips,
+  },
   async asyncData({ $http }) {
     const lessons = await $http.$get('./json/lessons.json')
     const deck = await $http.$get('./json/deck.json')
     const guitar = await $http.$get('./json/guitar.json')
+<<<<<<< HEAD
     const cavaco = await $http.$get('./json/cavaco.json')
     const bass = await $http.$get('./json/bass.json')
     
+=======
+>>>>>>> display
     const tips = await $http.$get('./json/tips.json')
 
     return {
@@ -108,6 +137,12 @@ export default {
       fadeOutValue: 10,
 
       isStopSequence: false,
+<<<<<<< HEAD
+=======
+
+      // Menu
+      isEnabledMenu: true,
+>>>>>>> display
     }
   },
   data() {
@@ -184,7 +219,17 @@ export default {
     this.stop(true)
   },
   methods: {
+    showMenu() {
+      this.isCollapse = !this.isCollapse
+    },
     load(payload) {
+<<<<<<< HEAD
+=======
+      // hide Menu
+      this.isEnabledMenu = payload.isEnabledMenu
+
+      // starting Audio library
+>>>>>>> display
       if (Tone.context.state !== 'running') {
         Tone.context.resume()
       }
@@ -192,6 +237,7 @@ export default {
       this.score = 'Carregando<br>...'
 
       // getting audios
+<<<<<<< HEAD
       this.instrument = payload.instrument
 
       switch (this.instrument) {
@@ -207,6 +253,9 @@ export default {
         default:
           break;
       }
+=======
+      this.getAudios()
+>>>>>>> display
 
       this.getAudios()
       
@@ -266,8 +315,13 @@ export default {
     // requiring Audio Files
     getAudios() {
       const urls = {}
+<<<<<<< HEAD
       for (let iString = 0; iString < this.instrumentMap.length; iString++) {
         const fret = this.instrumentMap[iString]
+=======
+      for (let iString = 0; iString < this.guitar.length; iString++) {
+        const fret = this.guitar[iString]
+>>>>>>> display
         fret.forEach((element) => {
           urls[element.note] = `${element.tablature}.mp3`
         })
@@ -286,6 +340,7 @@ export default {
     // requiring notes for generate sequence
     getNotes(fret) {
       let note = null
+<<<<<<< HEAD
       const strings = this.instrumentMap[this.stringNumber]
       const tablature = this.stringNumber + fret
       note = strings[fret][tablature]
@@ -305,10 +360,17 @@ export default {
       if (this.stringNumber === 6) {
         this.direction = 'down'
       }
+=======
+      const strings = this.guitar[this.stringNumber]
+      const tablature = this.stringNumber + fret
+      note = strings[fret][tablature]
+      return note
+>>>>>>> display
     },
 
     // generating audio sequence
     generateSequence() {
+<<<<<<< HEAD
       switch (this.stringNumber) {
         case 'allUp': 
           this.stringNumber = 6
@@ -334,11 +396,23 @@ export default {
             notes.push(this.getNotes(fragment))
           })
         }
+=======
+      const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
+      this.suffledDeck.forEach((card) => {
+        card.fragments.forEach((fragments) => {
+          const fragment = fragments.fragment
+          notes.push(this.getNotes(fragment))
+        })
+>>>>>>> display
       })
 
       const seq = new Tone.Sequence(
         (time, note) => {
           this.sampler.triggerAttackRelease(note, this.release, time)
+<<<<<<< HEAD
+=======
+          // console.log(`nota tocada:"${note}`);
+>>>>>>> display
         },
         notes,
         '4n'
@@ -484,23 +558,35 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+button {
+  width: 45px;
+  height: 45px;
+}
+
 .bg-exercise-screen {
-  background-color: #1d1e28;
+  background-color: var(--bg-nav);
+}
+
+#sidebar-menu {
+  background-color: var(--bg-layer-top) !important;
+  font-family: 'Encode Sans';
+  font-weight: var(--font-semi-bold);
 }
 
 .exercise-nav {
-  /* border: 1px solid white; */
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .exercise-screen {
-  /* border: 1px solid white; */
-  /* background-color: rgba(255, 255, 255, 0.1); */
   justify-content: center;
 }
 
-/*
-.exercise-screen {
-} */
+.sidebar-menu-enabled {
+  display: flex !important;
+}
+
+.sidebarMenuDisabled {
+  display: none !important;
+}
 </style>

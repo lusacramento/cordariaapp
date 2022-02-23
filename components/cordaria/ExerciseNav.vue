@@ -2,6 +2,7 @@
 <template>
   <form class="container-fluid form mt-3">
     <div class="row text-center justify-content-center">
+<<<<<<< HEAD
       <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
         <div class="select-instrument form-group">
           <label for="select-instrument-mode" class="form-label"
@@ -21,6 +22,9 @@
       </div>
 
       <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+=======
+      <div class="col-12">
+>>>>>>> display
         <div class="select-screen form-group">
           <label for="select-screen-mode" class="form-label"
             >Visualização
@@ -36,7 +40,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-lesson form-group">
           <label for="select-lesson" class="form-label">Lições</label>
           <br />
@@ -53,7 +57,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-first-finger form-group">
           <label for="select-first-finger" class="form-label"
             >Primeiro Dedo</label
@@ -76,7 +80,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-string form-group">
           <label for="select-string" class="form-label"> Corda</label>
           <br />
@@ -121,7 +125,7 @@
           </select>
         </div>
       </div>
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
+      <div class="col-12">
         <div class="select-andamento form-group">
           <label for="tempo" class="form-label">Andamento</label>
           <br />
@@ -153,7 +157,7 @@
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center control">
+      <div class="col-12 control">
         <div class="row form-group">
           <div class="col">
             <div class="row">
@@ -188,12 +192,22 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlay, faStop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Score from '@/components/cordaria/Score'
 
 library.add([faPlay, faStop])
+=======
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faPlay, faStop } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import Score from "@/components/cordaria/Score";
+
+library.add([faPlay, faStop]);
+>>>>>>> display
 
 export default {
   components: { FontAwesomeIcon, Score },
@@ -229,7 +243,12 @@ export default {
       bpm: 40,
       loadActiveThePratice: true,
       isReadtoLoad: true,
+<<<<<<< HEAD
     }
+=======
+      isEnabledMenu: false
+    };
+>>>>>>> display
   },
 
   watch: {
@@ -265,8 +284,13 @@ export default {
         bpm: this.bpm,
         view: this.view,
         loadActiveThePratice: this.loadActiveThePratice,
+<<<<<<< HEAD
         instrument: this.instrument,
       })
+=======
+        isEnabledMenu: this.isEnabledMenu,
+      });
+>>>>>>> display
     },
   },
 }
