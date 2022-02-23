@@ -1,191 +1,157 @@
 /* eslint-disable vue/no-template-shadow */
 <template>
   <form class="container-fluid form mt-3">
-    <div class="row text-center justify-content-center">
-<<<<<<< HEAD
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
-        <div class="select-instrument form-group">
-          <label for="select-instrument-mode" class="form-label"
-            >Instrumento
-          </label>
-          <select
-            id="select-instrument-mode"
-            v-model="instrument"
-            class="form-select justify-content-center"
+    <div class="col select-instrument form-group">
+      <label for="select-instrument-mode" class="form-label"
+        >Instrumento
+      </label>
+      <select
+        id="select-instrument-mode"
+        v-model="instrument"
+        class="form-select"
+      >
+        <option value="guitar">Violão/guitarra</option>
+        <option value="cavaco">Cavaquinho</option>
+        <option disabled value="guitar2">Guitarra (em breve)</option>
+        <option value="bass">Baixo</option>
+      </select>
+    </div>
+
+    <div class="col select-screen form-group">
+      <label for="select-screen-mode" class="form-label">Visualização </label>
+      <select id="select-screen-mode" v-model="view" class="form-select">
+        <option value="mobile">3 cartas</option>
+        <option value="desktop">Todas as cartas</option>
+      </select>
+    </div>
+
+      <div class="col select-lesson form-group">
+        <label for="select-lesson" class="form-label">Lições</label>
+        <select id="select-lesson" v-model="lesson" class="form-select">
+          <option
+            v-for="currentLesson in lessons"
+            :key="currentLesson.id"
+            :value="currentLesson.id"
           >
-            <option value="guitar">Violão</option>
-            <option value="cavaco">Cavaquinho</option>
-            <option disabled value="guitar2">Guitarra (em desenvolvimento)</option>
-            <option value="bass">Baixo</option>
-          </select>
-        </div>
+            {{ currentLesson.name }}
+          </option>
+        </select>
       </div>
 
-      <div class="col-lg-2 col-md-4 col-6 d-flex justify-self-center">
-=======
-      <div class="col-12">
->>>>>>> display
-        <div class="select-screen form-group">
-          <label for="select-screen-mode" class="form-label"
-            >Visualização
-          </label>
-          <select
-            id="select-screen-mode"
-            v-model="view"
-            class="form-select justify-content-center"
-          >
-            <option value="mobile">3 cartas</option>
-            <option value="desktop">Todas as cartas</option>
-          </select>
-        </div>
+    <div class="col-12 d-flex">
+      <div class="select-first-finger form-group">
+        <label for="select-first-finger" class="form-label"
+          >Primeiro Dedo</label
+        >
+        <br />
+        <select
+          id="select-first-finger"
+          v-model="firstFinger"
+          class="form-select disabled"
+          :disabled="isReadtoLoad"
+        >
+          <option value="0">Nenhum (Corda Solta)</option>
+          <option value="1" class="selected">Dedo 1</option>
+          <option value="2">Dedo 2</option>
+          <option value="3">Dedo 3</option>
+          <option value="4">Dedo 4</option>
+          <!-- <option value="all">Todos</option> avaliable for future versions-->
+          <!-- <option value="P">PMIA</option> avaliable for future versions-->
+        </select>
       </div>
+    </div>
 
-      <div class="col-12">
-        <div class="select-lesson form-group">
-          <label for="select-lesson" class="form-label">Lições</label>
-          <br />
-
-          <select id="select-lesson" v-model="lesson" class="form-select">
-            <option
-              v-for="currentLesson in lessons"
-              :key="currentLesson.id"
-              :value="currentLesson.id"
-            >
-              {{ currentLesson.name }}
-            </option>
-          </select>
-        </div>
+    <div class="col-12 d-flex">
+      <div class="select-string form-group">
+        <label for="select-string" class="form-label"> Corda</label>
+        <br />
+        <select
+          id="select-string"
+          v-model="stringNumber"
+          class="form-select"
+          :disabled="isReadtoLoad"
+        >
+          <template v-if="instrument === 'guitar'">
+            <option value="1">Corda 1 (Mi4)</option>
+            <option value="2">Corda 2 (Si3)</option>
+            <option value="3">Corda 3 (Sol3)</option>
+            <option value="4">Corda 4 (Ré3)</option>
+            <option value="5">Corda 5 (Lá2)</option>
+            <option value="6">Corda 6 (Mi2)</option>
+            <option value="allUp">Todas (ascendente)</option>
+            <option value="allDown">Todas (descendente)</option>
+          </template>
+          <template v-else-if="instrument === 'cavaco'">
+            <option value="1">Corda 1 (Ré5)</option>
+            <option value="2">Corda 2 (Si4)</option>
+            <option value="3">Corda 3 (Sol4)</option>
+            <option value="4">Corda 4 (Ré4)</option>
+          </template>
+          <template v-else-if="instrument === 'guitar2'">
+            <option value="1">Corda 1 (Mi4)</option>
+            <option value="2">Corda 2 (Si3)</option>
+            <option value="3">Corda 3 (Sol3)</option>
+            <option value="4">Corda 4 (Ré3)</option>
+            <option value="5">Corda 5 (Lá2)</option>
+            <option value="6">Corda 6 (Mi2)</option>
+            <option value="allUp">Todas (ascendente)</option>
+            <option value="allDown">Todas (descendente)</option>
+          </template>
+          <template v-else-if="instrument === 'bass'">
+            <option value="1">Corda 1 (Sol2)</option>
+            <option value="2">Corda 2 (Ré2)</option>
+            <option value="3">Corda 3 (Lá1)</option>
+            <option value="4">Corda 4 (Mi1)</option>
+          </template>
+        </select>
       </div>
-
-      <div class="col-12">
-        <div class="select-first-finger form-group">
-          <label for="select-first-finger" class="form-label"
-            >Primeiro Dedo</label
-          >
-          <br />
-          <select
-            id="select-first-finger"
-            v-model="firstFinger"
-            class="form-select disabled"
-            :disabled="isReadtoLoad"
-          >
-            <option value="0">Nenhum (Corda Solta)</option>
-            <option value="1" class="selected">Dedo 1</option>
-            <option value="2">Dedo 2</option>
-            <option value="3">Dedo 3</option>
-            <option value="4">Dedo 4</option>
-            <!-- <option value="all">Todos</option> avaliable for future versions-->
-            <!-- <option value="P">PMIA</option> avaliable for future versions-->
-          </select>
-        </div>
-      </div>
-
-      <div class="col-12">
-        <div class="select-string form-group">
-          <label for="select-string" class="form-label"> Corda</label>
-          <br />
-          <select
-            id="select-string"
-            v-model="stringNumber"
-            class="form-select"
-            :disabled="isReadtoLoad"
-          >
-            <template v-if="instrument === 'guitar'">
-              <option value="1">Corda 1 (Mi4)</option>
-              <option value="2">Corda 2 (Si3)</option>
-              <option value="3">Corda 3 (Sol3)</option>
-              <option value="4">Corda 4 (Ré3)</option>
-              <option value="5">Corda 5 (Lá2)</option>
-              <option value="6">Corda 6 (Mi2)</option>
-              <option value="allUp">Todas (ascendente)</option>
-              <option value="allDown">Todas (descendente)</option>
-            </template>
-            <template v-else-if="instrument === 'cavaco'">
-              <option value="1">Corda 1 (Ré5)</option>
-              <option value="2">Corda 2 (Si4)</option>
-              <option value="3">Corda 3 (Sol4)</option>
-              <option value="4">Corda 4 (Ré4)</option>
-            </template>
-            <template v-else-if="instrument === 'guitar2'">
-              <option value="1">Corda 1 (Mi4)</option>
-              <option value="2">Corda 2 (Si3)</option>
-              <option value="3">Corda 3 (Sol3)</option>
-              <option value="4">Corda 4 (Ré3)</option>
-              <option value="5">Corda 5 (Lá2)</option>
-              <option value="6">Corda 6 (Mi2)</option>
-              <option value="allUp">Todas (ascendente)</option>
-              <option value="allDown">Todas (descendente)</option>
-            </template>
-            <template v-else-if="instrument === 'bass'">
-              <option value="1">Corda 1 (Sol2)</option>
-              <option value="2">Corda 2 (Ré2)</option>
-              <option value="3">Corda 3 (Lá1)</option>
-              <option value="4">Corda 4 (Mi1)</option>
-            </template>
-          </select>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="select-andamento form-group">
-          <label for="tempo" class="form-label">Andamento</label>
-          <br />
+    </div>
+    <div class="col-12 d-flex">
+      <div class="select-andamento form-group">
+        <label for="tempo" class="form-label">Andamento</label>
+        <br />
+        <input
+          id="tempo-number"
+          v-model="bpm"
+          class="tempo form-number"
+          type="number"
+          min="30"
+          max="200"
+          aria-required="true"
+          aria-invalid="false"
+          :disabled="isReadtoLoad"
+          step="2"
+        />
+        <br />
+        <div class="slidecontainer">
           <input
-            id="tempo-number"
+            id="tempo-range"
             v-model="bpm"
-            class="tempo form-number"
-            type="number"
+            class="tempo form-range slider"
+            type="range"
             min="30"
             max="200"
-            aria-required="true"
-            aria-invalid="false"
             :disabled="isReadtoLoad"
             step="2"
           />
-          <br />
-          <div class="slidecontainer">
-            <input
-              id="tempo-range"
-              v-model="bpm"
-              class="tempo form-range slider"
-              type="range"
-              min="30"
-              max="200"
-              :disabled="isReadtoLoad"
-              step="2"
-            />
-          </div>
         </div>
       </div>
-
-      <div class="col-12 control">
-        <div class="row form-group">
-          <div class="col">
-            <div class="row">
-              <Score :score="score" />
-            </div>
-            <div class="row justify-content-center">
-              <div class="buttons d-flex justify-content-center pt-1">
-                <button
-                  v-if="isVisibleButtonStop"
-                  type="button"
-                  class="btn btn-danger btn-controls d-flex align-items-center justify-content-center"
-                  @click="stop(true)"
-                >
-                  <font-awesome-icon class="fa fa-code stop" :icon="iconStop" />
-                </button>
-                <button
-                  v-if="isVisibleButtonPlay"
-                  type="button"
-                  class="btn btn-success btn-controls d-flex align-items-center justify-content-center"
-                  @click="sendProps"
-                >
-                  <font-awesome-icon class="fa fa-code" :icon="iconPlay" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br />
+    </div>
+    <div class="col-12 d-flex">
+      <div class="buttons pt-1 d-flex justify-content-center">
+        <button
+          v-if="isVisibleButtonPlay"
+          type="button"
+          class="
+            btn btn-success btn-controls
+            d-flex
+            align-items-center
+            justify-content-center
+          "
+          @click="sendProps"
+        >
+          <font-awesome-icon class="fa fa-code" :icon="iconPlay" />
+        </button>
       </div>
     </div>
   </form>
@@ -193,14 +159,14 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlay, faStop } from '@fortawesome/free-solid-svg-icons'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import Score from '@/components/cordaria/Score'
+// import Score from '@/components/cordaria/Score'
 
-library.add([faPlay, faStop])
+library.add([faPlay])
 
 export default {
-  components: { FontAwesomeIcon, Score },
+  components: { FontAwesomeIcon },
 
   props: {
     isVisibleButtonPlay: Boolean,
@@ -217,7 +183,6 @@ export default {
         return {}
       },
     },
-    score: { type: String, default: '' },
   },
 
   // eslint-disable-next-line require-await
@@ -226,15 +191,14 @@ export default {
       instrument: 'guitar',
       view: 'mobile',
       iconPlay: 'play',
-      iconStop: 'stop',
       lesson: 1,
       firstFinger: 0,
       stringNumber: 1,
       bpm: 40,
       loadActiveThePratice: true,
       isReadtoLoad: true,
-      isEnabledMenu: false
-    };
+      isEnabledMenu: false,
+    }
   },
 
   watch: {
@@ -272,7 +236,7 @@ export default {
         loadActiveThePratice: this.loadActiveThePratice,
         instrument: this.instrument,
         isEnabledMenu: this.isEnabledMenu,
-      });
+      })
     },
   },
 }
@@ -280,7 +244,7 @@ export default {
 
 <style>
 form.form {
-  width: 80%;
+  width: 60%;
 }
 
 select:disabled,
@@ -294,11 +258,11 @@ label {
   font-weight: var(--font-regular);
   font-size: 0.9em;
 }
+
 select.form-select,
 input.form-number {
   font-family: 'Encode Sans';
   font-weight: var(--font-semi-bold);
-
   background-color: #1a1b24;
   color: aliceblue;
   width: 120px;

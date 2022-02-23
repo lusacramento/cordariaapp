@@ -3,26 +3,44 @@
     <div class="exercise-nav container-fluid">
       <div class="row text-center layer-top align-items-center">
         <div class="col">
-          <div class="mt-3 mb-4 d-flex justify-content-center align-items-center">
-          <h1 class="title mt-3 mb-4">{{ title }}</h1>
-          <button v-b-toggle.sidebar-menu>Menu</button>
-          <b-sidebar
-            id="sidebar-menu"
-            title="Menu"
-            shadow
-            :visible="isEnabledMenu"
+          <div
+            class="mt-3 mb-4 d-flex justify-content-center align-items-center"
           >
-            <div class="px-3 py-2">
-              <ExerciseNav
-                :lessons="lessons"
-                :is-visible-button-play="isVisibleButtonPlay"
-                :is-visible-button-stop="isVisibleButtonStop"
-                :stop="stop"
-                :score="score"
-                @props="load"
-              />
-            </div>
-          </b-sidebar>
+
+            <b-button v-b-toggle.sidebar-menu variant="dark">Menu</b-button>
+            <b-sidebar
+              id="sidebar-menu"
+              title="Menu"
+              shadow
+              bg-variant="dark" text-variant=""
+              :visible="isEnabledMenu"
+            >
+              <div class="px-3 py-2">
+                <ExerciseNav
+                  :lessons="lessons"
+                  :is-visible-button-play="isVisibleButtonPlay"
+                  :is-visible-button-stop="isVisibleButtonStop"
+                  :stop="stop"
+                  :score="score"
+                  @props="load"
+                />
+              </div>
+            </b-sidebar>
+            <h1 class="title mt-3 mb-4">{{ title }}</h1>
+            <ScoreTerminal :score="score" />
+            <button
+                  v-if="isVisibleButtonStop"
+                  type="button"
+                  class="
+                    btn btn-danger btn-controls
+                    d-flex
+                    align-items-center
+                    justify-content-center
+                  "
+                  @click="stop(true)"
+                >
+                  <font-awesome-icon class="fa fa-code stop" :icon="iconStop" />
+                </button>
 
           </div>
         </div>
@@ -42,24 +60,33 @@
       </div>
     </div>
     <div class="tips">
-      <Tips :tips="tips" />
+      <CatJump :tips="tips" />
     </div>
   </div>
 </template>
 
 <script>
-
-import Tips from "@/components/cordaria/Tips";
-import ExerciseNav from "@/components/cordaria/ExerciseNav";
-import ExerciseScreen from "@/components/cordaria/ExerciseScreen";
-
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import * as Tone from 'tone' // to play the audios
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStop } from '@fortawesome/free-solid-svg-icons'
+
+import CatJump from '@/components/cordaria/Tips'
+import ExerciseNav from '@/components/cordaria/ExerciseNav'
+import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
+import ScoreTerminal from '@/components/cordaria/Score'
+// import Score from '@/components/cordaria/Score'
+
+library.add([faStop])
 
 export default {
+  name: 'APratica',
   components: {
+    FontAwesomeIcon,
+    CatJump,
     ExerciseNav,
     ExerciseScreen,
-    Tips,
+    ScoreTerminal,
   },
   async asyncData({ $http }) {
     const lessons = await $http.$get('./json/lessons.json')
@@ -67,7 +94,7 @@ export default {
     const guitar = await $http.$get('./json/guitar.json')
     const cavaco = await $http.$get('./json/cavaco.json')
     const bass = await $http.$get('./json/bass.json')
-    
+
     const tips = await $http.$get('./json/tips.json')
 
     return {
@@ -107,6 +134,8 @@ export default {
       // Show Buttons
       isVisibleButtonPlay: false,
       isVisibleButtonStop: false,
+      iconStop: 'stop',
+
 
       // Indexes
       preCount: 4,
@@ -223,21 +252,21 @@ export default {
       this.instrument = payload.instrument
 
       switch (this.instrument) {
-        case 'guitar': 
-          this.instrumentMap = this.guitar         
-          break;
+        case 'guitar':
+          this.instrumentMap = this.guitar
+          break
         case 'cavaco':
           this.instrumentMap = this.cavaco
-          break;
+          break
         case 'bass':
           this.instrumentMap = this.bass
-          break;
+          break
         default:
-          break;
+          break
       }
 
       this.getAudios()
-      
+
       // getting form data
       payload.view === 'mobile'
         ? (this.isMobile = true)
@@ -325,9 +354,10 @@ export default {
       if (this.stringNumber === 1) {
         this.direction = 'up'
       }
-      if (this.direction === 'down')  {
+      if (this.direction === 'down') {
         this.stringNumber--
-      } if (this.direction === 'up') {
+      }
+      if (this.direction === 'up') {
         this.stringNumber++
       }
       if (this.stringNumber === 6) {
@@ -338,11 +368,11 @@ export default {
     // generating audio sequence
     generateSequence() {
       switch (this.stringNumber) {
-        case 'allUp': 
+        case 'allUp':
           this.stringNumber = 6
           this.allString = true
           break
-          case 'allDown': 
+        case 'allDown':
           this.stringNumber = 1
           this.allString = true
           break
@@ -355,7 +385,7 @@ export default {
             const fragment = fragments.fragment
             notes.push(this.getNotes(fragment))
           })
-            this.changingString()
+          this.changingString()
         } else {
           card.fragments.forEach((fragments) => {
             const fragment = fragments.fragment
@@ -513,6 +543,7 @@ export default {
 </script>
 
 <style scoped>
+$body-bg 
 button {
   width: 45px;
   height: 45px;
