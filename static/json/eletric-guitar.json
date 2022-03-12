@@ -2,7 +2,7 @@
     "guitarMap": [
         [
             {
-                "baseUrl": "/audios/guitar/",
+                "baseUrl": "/audios/eletric-guitar/",
                 "note": "C1",
                 "enharmony": "null",
                 "tablature": "metronome-high-bip"

@@ -10,10 +10,15 @@
         v-model="instrument"
         class="form-select"
       >
-        <option value="guitar">Violão/guitarra</option>
-        <option value="cavaco">Cavaquinho</option>
-        <option disabled value="guitar2">Guitarra (em breve)</option>
-        <option value="bass">Baixo</option>
+        <option value="acoustic-guitar">Violão</option>
+        <option value="cavaco">
+          Cavaquinho
+          <span class="new">novo!</span>
+        </option>
+        <option value="eletric-guitar">
+          Guitarra <span class="new">novo!</span>
+        </option>
+        <option value="bass">Baixo <span class="new">novo!</span></option>
       </select>
     </div>
 
@@ -25,18 +30,18 @@
       </select>
     </div>
 
-      <div class="col select-lesson form-group">
-        <label for="select-lesson" class="form-label">Lições</label>
-        <select id="select-lesson" v-model="lesson" class="form-select">
-          <option
-            v-for="currentLesson in lessons"
-            :key="currentLesson.id"
-            :value="currentLesson.id"
-          >
-            {{ currentLesson.name }}
-          </option>
-        </select>
-      </div>
+    <div class="col select-lesson form-group">
+      <label for="select-lesson" class="form-label">Lições</label>
+      <select id="select-lesson" v-model="lesson" class="form-select">
+        <option
+          v-for="currentLesson in lessons"
+          :key="currentLesson.id"
+          :value="currentLesson.id"
+        >
+          {{ currentLesson.name }}
+        </option>
+      </select>
+    </div>
 
     <div class="col-12 d-flex">
       <div class="select-first-finger form-group">
@@ -71,7 +76,12 @@
           class="form-select"
           :disabled="isReadtoLoad"
         >
-          <template v-if="instrument === 'guitar'">
+          <template
+            v-if="
+              instrument === 'acoustic-guitar' ||
+              instrument === 'eletric-guitar'
+            "
+          >
             <option value="1">Corda 1 (Mi4)</option>
             <option value="2">Corda 2 (Si3)</option>
             <option value="3">Corda 3 (Sol3)</option>
@@ -86,16 +96,6 @@
             <option value="2">Corda 2 (Si4)</option>
             <option value="3">Corda 3 (Sol4)</option>
             <option value="4">Corda 4 (Ré4)</option>
-          </template>
-          <template v-else-if="instrument === 'guitar2'">
-            <option value="1">Corda 1 (Mi4)</option>
-            <option value="2">Corda 2 (Si3)</option>
-            <option value="3">Corda 3 (Sol3)</option>
-            <option value="4">Corda 4 (Ré3)</option>
-            <option value="5">Corda 5 (Lá2)</option>
-            <option value="6">Corda 6 (Mi2)</option>
-            <option value="allUp">Todas (ascendente)</option>
-            <option value="allDown">Todas (descendente)</option>
           </template>
           <template v-else-if="instrument === 'bass'">
             <option value="1">Corda 1 (Sol2)</option>
@@ -188,7 +188,7 @@ export default {
   // eslint-disable-next-line require-await
   data() {
     return {
-      instrument: 'guitar',
+      instrument: 'acoustic-guitar',
       view: 'mobile',
       iconPlay: 'play',
       lesson: 1,

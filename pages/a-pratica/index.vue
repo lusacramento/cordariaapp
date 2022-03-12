@@ -90,7 +90,8 @@ export default {
   async asyncData({ $http }) {
     const lessons = await $http.$get('./json/lessons.json')
     const deck = await $http.$get('./json/deck.json')
-    const guitar = await $http.$get('./json/guitar.json')
+    const acousticGuitar = await $http.$get('./json/acoustic-guitar.json')
+    const eletricGuitar = await $http.$get('./json/eletric-guitar.json')
     const cavaco = await $http.$get('./json/cavaco.json')
     const bass = await $http.$get('./json/bass.json')
 
@@ -99,7 +100,8 @@ export default {
     return {
       lessons: lessons.lessons,
       deck: deck.deck,
-      guitar: guitar.guitarMap,
+      acousticGuitar: acousticGuitar.guitarMap,
+      eletricGuitar: eletricGuitar.guitarMap,
       cavaco: cavaco.cavacoMap,
       bass: bass.bassMap,
       instrumentMap: null,
@@ -250,8 +252,11 @@ export default {
       this.instrument = payload.instrument
 
       switch (this.instrument) {
-        case 'guitar':
-          this.instrumentMap = this.guitar
+        case 'acoustic-guitar':
+          this.instrumentMap = this.acousticGuitar
+          break
+        case 'eletric-guitar':
+          this.instrumentMap = this.eletricGuitar
           break
         case 'cavaco':
           this.instrumentMap = this.cavaco
