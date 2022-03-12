@@ -6,13 +6,13 @@
           <div
             class="mt-3 mb-4 d-flex justify-content-center align-items-center"
           >
-
             <b-button v-b-toggle.sidebar-menu variant="dark">Menu</b-button>
             <b-sidebar
               id="sidebar-menu"
               title="Menu"
               shadow
-              bg-variant="dark" text-variant=""
+              bg-variant="dark"
+              text-variant=""
               :visible="isEnabledMenu"
             >
               <div class="px-3 py-2">
@@ -29,19 +29,18 @@
             <h1 class="title mt-3 mb-4">{{ title }}</h1>
             <ScoreTerminal :score="score" />
             <button
-                  v-if="isVisibleButtonStop"
-                  type="button"
-                  class="
-                    btn btn-danger btn-controls
-                    d-flex
-                    align-items-center
-                    justify-content-center
-                  "
-                  @click="stop(true)"
-                >
-                  <font-awesome-icon class="fa fa-code stop" :icon="iconStop" />
-                </button>
-
+              v-if="isVisibleButtonStop"
+              type="button"
+              class="
+                btn btn-danger btn-controls
+                d-flex
+                align-items-center
+                justify-content-center
+              "
+              @click="stop(true)"
+            >
+              <font-awesome-icon class="fa fa-code stop" :icon="iconStop" />
+            </button>
           </div>
         </div>
       </div>
@@ -135,7 +134,6 @@ export default {
       isVisibleButtonPlay: false,
       isVisibleButtonStop: false,
       iconStop: 'stop',
-
 
       // Indexes
       preCount: 4,
@@ -543,7 +541,6 @@ export default {
 </script>
 
 <style scoped>
-$body-bg 
 button {
   width: 45px;
   height: 45px;
