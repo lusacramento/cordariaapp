@@ -12,7 +12,7 @@
               id="sidebar-menu"
               title="Menu"
               shadow
-              bg-variant="dark" text-variant=""
+              bg-variant="primary" text-variant=""
               :visible="isEnabledMenu"
             >
               <div class="px-3 py-2">
@@ -543,7 +543,9 @@ export default {
 </script>
 
 <style scoped>
-$body-bg 
+.bg-prymary {
+  background-color:chartreuse !important;
+}
 button {
   width: 45px;
   height: 45px;
