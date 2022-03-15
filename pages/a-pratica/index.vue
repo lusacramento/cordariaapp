@@ -3,9 +3,6 @@
     <div class="exercise-nav container-fluid">
       <div class="row text-center layer-top align-items-center">
         <div class="col-12 col-lg-4">
-          <b-button id="menu-button" v-b-toggle.sidebar-menu variant="dark"
-            >Menu</b-button
-          >
           <b-sidebar
             id="sidebar-menu"
             title="Menu"
@@ -15,7 +12,9 @@
             text-variant=""
             :visible="isEnabledMenu"
           >
-            <div class="px-3 py-2">
+            <div
+              class="exercises-nav-layer d-flex flex-column align-items-center"
+            >
               <ExerciseNav
                 :lessons="lessons"
                 :is-visible-button-play="isVisibleButtonPlay"
@@ -26,6 +25,9 @@
               />
             </div>
           </b-sidebar>
+          <b-button id="menu-button" v-b-toggle.sidebar-menu variant="dark"
+            >Menu</b-button
+          >
         </div>
         <div class="col-12 col-lg-4">
           <h1 class="title mt-3 mb-4">{{ title }}</h1>
@@ -548,7 +550,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 b-button {
   width: 45px;
   height: 45px;
@@ -559,7 +561,7 @@ b-button {
 }
 
 #sidebar-menu {
-  background-color: var(--bg-layer-top) !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
   font-family: 'Encode Sans';
   font-weight: var(--font-semi-bold);
 }
@@ -585,5 +587,16 @@ b-button {
 
 .sidebarMenuDisabled {
   display: none !important;
+}
+
+.b-sidebar-body {
+  display: flex !important;
+  align-items: center !important;
+}
+.close {
+  color: white;
+}
+.close:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 </style>

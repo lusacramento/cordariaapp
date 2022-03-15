@@ -1,14 +1,22 @@
 /* eslint-disable vue/no-template-shadow */
 <template>
-  <form class="container-fluid form mt-3">
-    <div class="col select-instrument form-group">
+  <form class="container-fluid form-row justify-content-center">
+    <div
+      class="
+        form-group
+        col-6 col-lg-12
+        justify-self-center justify-content-center
+        select-instrument
+      "
+    >
       <label for="select-instrument-mode" class="form-label"
         >Instrumento
       </label>
+      <br />
       <select
         id="select-instrument-mode"
         v-model="instrument"
-        class="form-select"
+        class="controls justify-self-center"
       >
         <option value="acoustic-guitar">Violão</option>
         <option value="cavaco">
@@ -22,17 +30,17 @@
       </select>
     </div>
 
-    <div class="col select-screen form-group">
+    <div class="form-group col-6 col-lg-12 col-6 col-lg-12 select-screen">
       <label for="select-screen-mode" class="form-label">Visualização </label>
-      <select id="select-screen-mode" v-model="view" class="form-select">
+      <br />
+      <select id="select-screen-mode" v-model="view" class="controls">
         <option value="mobile">3 cartas</option>
         <option value="desktop">Todas as cartas</option>
       </select>
     </div>
-
-    <div class="col select-lesson form-group">
-      <label for="select-lesson" class="form-label">Lições</label>
-      <select id="select-lesson" v-model="lesson" class="form-select">
+    <div class="form-group col-6 col-lg-12 select-lesson">
+      <label for="select-lesson" class="form-label">Lições</label><br />
+      <select id="select-lesson" v-model="lesson" class="controls">
         <option
           v-for="currentLesson in lessons"
           :key="currentLesson.id"
@@ -43,70 +51,63 @@
       </select>
     </div>
 
-    <div class="col-12 d-flex">
-      <div class="select-first-finger form-group">
-        <label for="select-first-finger" class="form-label"
-          >Primeiro Dedo</label
-        >
-        <br />
-        <select
-          id="select-first-finger"
-          v-model="firstFinger"
-          class="form-select disabled"
-          :disabled="isReadtoLoad"
-        >
-          <option value="0">Nenhum (Corda Solta)</option>
-          <option value="1" class="selected">Dedo 1</option>
-          <option value="2">Dedo 2</option>
-          <option value="3">Dedo 3</option>
-          <option value="4">Dedo 4</option>
-          <!-- <option value="all">Todos</option> avaliable for future versions-->
-          <!-- <option value="P">PMIA</option> avaliable for future versions-->
-        </select>
-      </div>
+    <div class="form-group col-6 col-lg-12 select-first-finger">
+      <label for="select-first-finger" class="form-label">Primeiro Dedo</label>
+      <br />
+      <select
+        id="select-first-finger"
+        v-model="firstFinger"
+        class="controls disabled"
+        :disabled="isReadtoLoad"
+      >
+        <option value="0">Nenhum (Corda Solta)</option>
+        <option value="1" class="selected">Dedo 1</option>
+        <option value="2">Dedo 2</option>
+        <option value="3">Dedo 3</option>
+        <option value="4">Dedo 4</option>
+        <!-- <option value="all">Todos</option> avaliable for future versions-->
+        <!-- <option value="P">PMIA</option> avaliable for future versions-->
+      </select>
     </div>
 
-    <div class="col-12 d-flex">
-      <div class="select-string form-group">
-        <label for="select-string" class="form-label"> Corda</label>
-        <br />
-        <select
-          id="select-string"
-          v-model="stringNumber"
-          class="form-select"
-          :disabled="isReadtoLoad"
+    <div class="form-group col-6 col-lg-12 select-string">
+      <label for="select-string" class="form-label"> Corda</label>
+      <br />
+      <select
+        id="select-string"
+        v-model="stringNumber"
+        class="controls"
+        :disabled="isReadtoLoad"
+      >
+        <template
+          v-if="
+            instrument === 'acoustic-guitar' || instrument === 'eletric-guitar'
+          "
         >
-          <template
-            v-if="
-              instrument === 'acoustic-guitar' ||
-              instrument === 'eletric-guitar'
-            "
-          >
-            <option value="1">Corda 1 (Mi4)</option>
-            <option value="2">Corda 2 (Si3)</option>
-            <option value="3">Corda 3 (Sol3)</option>
-            <option value="4">Corda 4 (Ré3)</option>
-            <option value="5">Corda 5 (Lá2)</option>
-            <option value="6">Corda 6 (Mi2)</option>
-            <option value="allUp">Todas (ascendente)</option>
-            <option value="allDown">Todas (descendente)</option>
-          </template>
-          <template v-else-if="instrument === 'cavaco'">
-            <option value="1">Corda 1 (Ré5)</option>
-            <option value="2">Corda 2 (Si4)</option>
-            <option value="3">Corda 3 (Sol4)</option>
-            <option value="4">Corda 4 (Ré4)</option>
-          </template>
-          <template v-else-if="instrument === 'bass'">
-            <option value="1">Corda 1 (Sol2)</option>
-            <option value="2">Corda 2 (Ré2)</option>
-            <option value="3">Corda 3 (Lá1)</option>
-            <option value="4">Corda 4 (Mi1)</option>
-          </template>
-        </select>
-      </div>
+          <option value="1">Corda 1 (Mi4)</option>
+          <option value="2">Corda 2 (Si3)</option>
+          <option value="3">Corda 3 (Sol3)</option>
+          <option value="4">Corda 4 (Ré3)</option>
+          <option value="5">Corda 5 (Lá2)</option>
+          <option value="6">Corda 6 (Mi2)</option>
+          <option value="allUp">Todas (ascendente)</option>
+          <option value="allDown">Todas (descendente)</option>
+        </template>
+        <template v-else-if="instrument === 'cavaco'">
+          <option value="1">Corda 1 (Ré5)</option>
+          <option value="2">Corda 2 (Si4)</option>
+          <option value="3">Corda 3 (Sol4)</option>
+          <option value="4">Corda 4 (Ré4)</option>
+        </template>
+        <template v-else-if="instrument === 'bass'">
+          <option value="1">Corda 1 (Sol2)</option>
+          <option value="2">Corda 2 (Ré2)</option>
+          <option value="3">Corda 3 (Lá1)</option>
+          <option value="4">Corda 4 (Mi1)</option>
+        </template>
+      </select>
     </div>
-    <div class="col-12 d-flex">
+    <div class="form-group col-6 col-lg-12">
       <div class="select-andamento form-group">
         <label for="tempo" class="form-label">Andamento</label>
         <br />
@@ -137,7 +138,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 d-flex">
+    <div class="col-12">
       <div class="buttons pt-1 d-flex justify-content-center">
         <button
           v-if="isVisibleButtonPlay"
@@ -244,7 +245,7 @@ export default {
 
 <style>
 form.form {
-  width: 60%;
+  width: 80%;
 }
 
 select:disabled,
@@ -259,13 +260,14 @@ label {
   font-size: 0.9em;
 }
 
-select.form-select,
+select.controls,
 input.form-number {
   font-family: 'Encode Sans';
   font-weight: var(--font-semi-bold);
   background-color: #1a1b24;
   color: aliceblue;
   width: 120px;
+  height: 30px;
   border: none;
   font-size: 0.8em;
 }
@@ -371,7 +373,7 @@ input.slider:focus::-ms-fill-upper {
   background: #ccc;
 }
 
-@media (max-width: 575.98px) {
+/* @media (max-width: 575.98px) {
   label {
     margin-top: 20px !important;
     margin-bottom: 10px !important;
@@ -379,9 +381,9 @@ input.slider:focus::-ms-fill-upper {
   .control {
     margin-top: 30px !important;
   }
-}
+} */
 
-@media (min-width: 576px) and (max-width: 991.98px) {
+/* @media (min-width: 576px) and (max-width: 991.98px) {
   label {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
@@ -389,5 +391,5 @@ input.slider:focus::-ms-fill-upper {
   .control {
     margin-top: 10px !important;
   }
-}
+} */
 </style>
