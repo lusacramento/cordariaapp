@@ -66,12 +66,12 @@ Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à C
 
 ![Patrocínio](https://cordaria.com.br/_nuxt/img/public-agencies-horizontal-logo.fac1f52.png)
 
-
-
 ## Equipe
+<p>
 Developer: Lu Sacramento;
-
+<br>
 Designer: Gabriel Barreto.
+</p>
 <br>
 
 ## :sparkles: Recursos ##
@@ -111,10 +111,6 @@ As seguintes ferramentas usadas neste projeto:
 <p>
 <a href="https://code.visualstudio.com/"><img height= "35" src= "https://img.shields.io/badge/VS_Code-0078D4?style=for-the-badge&logo=vsco&logoColor=white"></a>
 </p>
-<br>
-
-</p>
-
 
 ## :checkered_flag: Iniciando ##
 
@@ -143,7 +139,7 @@ $ yarn run dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
-<r>
+<br>
 
 ## :memo: License ##
 
