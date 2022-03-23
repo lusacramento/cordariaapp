@@ -1,4 +1,50 @@
-# cordaria
+<div align="center" id="top"> 
+  <img src="./.github/app.gif" alt="Cordaria" />
+
+  &#xa0;
+
+  <a href="https://cordaria.netlify.app">Demo</a>
+</div>
+
+<h1 align="center">Cordaria</h1>
+
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
+
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
+
+  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
+
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8" /> -->
+
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8" /> -->
+
+  <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8" />
+</p>
+
+<!-- Status -->
+
+<!-- <h4 align="center"> 
+	🚧  Cordaria 🚀 Under construction...  🚧
+</h4> 
+
+<hr> -->
+
+<p align="center">
+  <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Recursos</a> &#xa0; | &#xa0;
+  <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requisitos">Requisitos</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
+  <a href="#memo-license">Licença</a> &#xa0; | &#xa0;
+  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
+</p>
+
+<br>
+
+## :dart: Sobre ##
 
 ## O que é?
 Destinado à pessoas interessadas em iniciar o estudo do violão e guitarra e professores dessa arte, o projeto Cordaria é um aplicativo web com intuito de auxiliar a prática ao instrumento.
@@ -17,81 +63,79 @@ A pesquisa “Cordaria – Desenvolvimento de aplicação web para iniciação �
 Utilizando meus conhecimentos de uma década como professor e alguns anos de desenvolvedor web, implementei uma aplicação para prática de exercícios básicos de violão e guitarra baseada em alguns métodos já experienciados por mim enquanto discente e docente. Com isso, Cordaria pretende ampliar as possibilidades metodológicas do ensino prático destes instrumentos num cenário EAD e oferecer uma oportunidade diferente para iniciação da arte do fazer musical, além de incentivar programadores e professores a pensar novas formas de aprendizagem.
 
 ## Equipe
-Developer: Lu Sacramento
-Designer: Gabriel Barreto
+Developer: Lu Sacramento;
 
-# Créditos
-Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à Cultura – Lei Aldir Blanc, Governo Federal, Ministério do Turismo e Secretaria Especial de Cultura, através da aprovação no Edital LAB no 14/2020 – “Seleção de Bolsistas para as Áreas Artísticas Técnicas e de Produção Cultural” promovido pela Secretaria de Cultura e Turismo de Minas Gerais – SECULT.
+Designer: Gabriel Barreto.
 
-![Patrocínio](https://cordaria.com.br/_nuxt/img/public-agencies-horizontal-logo.fac1f52.png)
+## :sparkles: Recursos ##
 
-## Rode sem a necessidade de instalar
-Acesse -> [https://cordaria.com.br](https://cordaria.com.br) <-
+Treinamentos para os instrumentos:
+:heavy_check_mark: Violão;\
+:heavy_check_mark: Baixo;\
+:heavy_check_mark: Guitarra;\
+:heavy_check_mark: cavaquinho;\
 
-## Build Setup (Instruções para compilar. Documentação em inglês)
+## :rocket: Tecnologias ##
+
+As seguintes ferramentas usadas neste projeto:
+### Frameworks
+<p>
+<a href="https://www.nuxtjs.org"><img height= "35" src="https://img.shields.io/badge/nuxt.js-339933?style=for-the-badge&logo=nuxtdotjs&logoColor=white"></a>
+<a href="https://vuejs.org/"><img height= "35" src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D"></a>
+</p>
+
+### Estilo
+<p>
+<a href="https://getbootstrap.com/"><img height= "35" src="https://img.shields.io/badge/Bootstrap-35495E?style=for-the-badge&logo=bootstrap&logoColor=4FC08D"></a>
+<a href="https://bootstrap-vue.org/"><img height= "35" src="https://img.shields.io/badge/BootstrapVue-35495E?style=for-the-badge&logo=bootstrap&logoColor=4FC08D"></a>
+
+### Backend
+<a href="https://nodejs.org/en/"><img height= "35" src= "https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"></a>
+<a href="https://www.json.org/json-en.html"><img height= "35" src= "https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=black"></a>
+</p>
+
+### Controle de Versão
+<p>
+<a href="https://git-scm.com/"><img height= "35" src= "https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"></a>
+</p>
+
+### Editor preferido
+<p>
+<a href="https://code.visualstudio.com/"><img height= "35" src= "https://img.shields.io/badge/VS_Code-0078D4?style=for-the-badge&logo=vsco&logoColor=white"></a>
+</p>
+<br>
+
+</p>
+
+## :white_check_mark: Requisitos ##
+
+Antes de inciar :checkered_flag:, você precisa ter [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) instalados.
+
+## :checkered_flag: Starting ##
 
 ```bash
-# install dependencies
-$ yarn install
+# Clone este projeto
+$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/cordaria
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+# Accesse a pasta
+$ cd cordaria
 
-# build for production and launch server
-$ yarn build
+# Instale as dependências
+$ yarn
+
+# Rode o projeto
 $ yarn start
 
-# generate static project
-$ yarn generate
+# The server will initialize in the <http://localhost:3000>
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## :memo: License ##
 
-## Special Directories
-
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+Este projeto esta sobre licença do MI. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
-### `pages`
+Construído com :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+&#xa0;
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+<a href="#top">Voltar ao início</a>
