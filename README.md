@@ -1,36 +1,11 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Cordaria" />
+  <img src="https://cordaria.com.br/_nuxt/img/logo-cordaria_escura_new.png" height= "270" alt="Cordaria" />
 
   &#xa0;
 
-  <a href="https://cordaria.netlify.app">Demo</a>
 </div>
 
-<h1 align="center">Cordaria</h1>
-
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
-
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
-
-  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8" /> -->
-
-  <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/cordaria?color=56BEB8" />
-</p>
-
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Cordaria 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
+<h1 align="center"><a href="https://cordaria.com.br">Já praticou Hoje?</a></h1>
 
 <p align="center">
   <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
@@ -39,7 +14,7 @@
   <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-compilando">Compilando</a> &#xa0; | &#xa0;
   <a href="#memo-license">Licença</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
+  <a href="https://github.com/lusacramento" target="_blank">Autor</a>
 </p>
 
 <br>
@@ -146,7 +121,7 @@ $ yarn run dev
 Este projeto esta sobre licença do MIT. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
-Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">lusacramento</a>
+Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/lusacramento" target="_blank">lusacramento</a>
 
 &#xa0;
 
