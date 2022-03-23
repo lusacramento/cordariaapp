@@ -36,8 +36,8 @@
   <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
   <a href="#sparkles-recursos">Recursos</a> &#xa0; | &#xa0;
   <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requisitos">Requisitos</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-compilando">Compilando</a> &#xa0; | &#xa0;
   <a href="#memo-license">Licença</a> &#xa0; | &#xa0;
   <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
 </p>
@@ -72,6 +72,7 @@ Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à C
 Developer: Lu Sacramento;
 
 Designer: Gabriel Barreto.
+<br>
 
 ## :sparkles: Recursos ##
 
@@ -106,7 +107,7 @@ As seguintes ferramentas usadas neste projeto:
 <a href="https://git-scm.com/"><img height= "35" src= "https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"></a>
 </p>
 
-### Editor preferido
+### Editor de Código
 <p>
 <a href="https://code.visualstudio.com/"><img height= "35" src= "https://img.shields.io/badge/VS_Code-0078D4?style=for-the-badge&logo=vsco&logoColor=white"></a>
 </p>
@@ -118,19 +119,18 @@ As seguintes ferramentas usadas neste projeto:
 ## :checkered_flag: Iniciando ##
 
 ### Rode sem a necessidade de instalar
-Acesse -> [**https://cordaria.com.br**](https://cordaria.com.br) <-
+Acesse -> [**https://cordaria.com.br**](https://cordaria.com.br). Caso tenhas interesse em colaborar com o desenvolvimento, peço favor que entre em contato conosco. Serás bem vinda sua colaboração!
 
-Caso deseje colaborar conosco, siga as instruções abaixo:
-### :white_check_mark: Requisitos ###
+## :white_check_mark: Compilando ##
 
-Antes de inciar &#xa0 :checkered_flag:, você precisa ter [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) instalados.
 
-Instruções para compilar (Documentação em inglês).
+Antes de inciar &#xa0 :checkered_flag:, você precisa ter [Git](https://git-scm.com) e [Node](https://nodejs.org/en/) instalados (Documentação em inglês).
+
 
 
 ```bash
 # Clone este projeto
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/cordaria
+$ git clone https://github.com/lusacramento/Cordaria.git
 
 # Accesse a pasta
 $ cd cordaria
@@ -139,14 +139,15 @@ $ cd cordaria
 $ yarn
 
 # Rode o projeto
-$ yarn start
+$ yarn run dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
+<r>
 
 ## :memo: License ##
 
-Este projeto esta sobre licença do MI. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
+Este projeto esta sobre licença do MIT. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
 Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">lusacramento</a>
