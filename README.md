@@ -34,7 +34,7 @@
 
 <p align="center">
   <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Recursos</a> &#xa0; | &#xa0;
+  <a href="#sparkles-recursos">Recursos</a> &#xa0; | &#xa0;
   <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requisitos">Requisitos</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
@@ -44,7 +44,7 @@
 
 <br>
 
-## :dart: Sobre ##
+## :dart: &#xa0 Sobre ##
 
 ## O que é?
 Destinado à pessoas interessadas em iniciar o estudo do violão e guitarra e professores dessa arte, o projeto Cordaria é um aplicativo web com intuito de auxiliar a prática ao instrumento.
@@ -67,7 +67,7 @@ Developer: Lu Sacramento;
 
 Designer: Gabriel Barreto.
 
-## :sparkles: Recursos ##
+## :sparkles: &#xa0 Recursos ##
 
 Treinamentos para os instrumentos:
 :heavy_check_mark: Violão;\
@@ -75,7 +75,7 @@ Treinamentos para os instrumentos:
 :heavy_check_mark: Guitarra;\
 :heavy_check_mark: cavaquinho;\
 
-## :rocket: Tecnologias ##
+## :rocket: &#xa0 Tecnologias ##
 
 As seguintes ferramentas usadas neste projeto:
 ### Frameworks
@@ -111,7 +111,7 @@ As seguintes ferramentas usadas neste projeto:
 
 Antes de inciar :checkered_flag:, você precisa ter [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) instalados.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: &#xa0 Iniciando ##
 
 ```bash
 # Clone este projeto
@@ -134,7 +134,7 @@ $ yarn start
 Este projeto esta sobre licença do MI. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
-Construído com :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
+Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">LU SACRAMENTO</a>
 
 &#xa0;
 
