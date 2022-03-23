@@ -44,7 +44,7 @@
 
 <br>
 
-## :dart: &#xa0 Sobre ##
+## :dart:  Sobre ##
 
 ## O que é?
 Destinado à pessoas interessadas em iniciar o estudo do violão e guitarra e professores dessa arte, o projeto Cordaria é um aplicativo web com intuito de auxiliar a prática ao instrumento.
@@ -67,7 +67,7 @@ Developer: Lu Sacramento;
 
 Designer: Gabriel Barreto.
 
-## :sparkles: &#xa0 Recursos ##
+## :sparkles: Recursos ##
 
 Treinamentos para os instrumentos:
 :heavy_check_mark: Violão;\
@@ -75,7 +75,7 @@ Treinamentos para os instrumentos:
 :heavy_check_mark: Guitarra;\
 :heavy_check_mark: cavaquinho;\
 
-## :rocket: &#xa0 Tecnologias ##
+## :rocket: Tecnologias ##
 
 As seguintes ferramentas usadas neste projeto:
 ### Frameworks
@@ -111,7 +111,7 @@ As seguintes ferramentas usadas neste projeto:
 
 Antes de inciar :checkered_flag:, você precisa ter [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) instalados.
 
-## :checkered_flag: &#xa0 Iniciando ##
+## :checkered_flag: Iniciando ##
 
 ```bash
 # Clone este projeto
