@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="https://cordaria.com.br/_nuxt/img/logo-cordaria_escura_new.png" height= "270" alt="Cordaria" />
+  <img src="https://cordaria.com.br/_nuxt/img/logo-cordaria_escura_new.png" href="https://cordaria.com.br" height= "270" alt="Cordaria" />
 
   &#xa0;
 
