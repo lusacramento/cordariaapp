@@ -44,7 +44,7 @@
 
 <br>
 
-## :dart:  Sobre ##
+## :dart: Sobre ##
 
 ## O que é?
 Destinado à pessoas interessadas em iniciar o estudo do violão e guitarra e professores dessa arte, o projeto Cordaria é um aplicativo web com intuito de auxiliar a prática ao instrumento.
@@ -62,6 +62,12 @@ A pesquisa “Cordaria – Desenvolvimento de aplicação web para iniciação �
 
 Utilizando meus conhecimentos de uma década como professor e alguns anos de desenvolvedor web, implementei uma aplicação para prática de exercícios básicos de violão e guitarra baseada em alguns métodos já experienciados por mim enquanto discente e docente. Com isso, Cordaria pretende ampliar as possibilidades metodológicas do ensino prático destes instrumentos num cenário EAD e oferecer uma oportunidade diferente para iniciação da arte do fazer musical, além de incentivar programadores e professores a pensar novas formas de aprendizagem.
 
+Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à Cultura – Lei Aldir Blanc, Governo Federal, Ministério do Turismo e Secretaria Especial de Cultura, através da aprovação no Edital LAB no 14/2020 – “Seleção de Bolsistas para as Áreas Artísticas Técnicas e de Produção Cultural” promovido pela Secretaria de Cultura e Turismo de Minas Gerais – SECULT. 
+
+![Patrocínio](https://cordaria.com.br/_nuxt/img/public-agencies-horizontal-logo.fac1f52.png)
+
+
+
 ## Equipe
 Developer: Lu Sacramento;
 
@@ -70,10 +76,11 @@ Designer: Gabriel Barreto.
 ## :sparkles: Recursos ##
 
 Treinamentos para os instrumentos:
+
 :heavy_check_mark: Violão;\
 :heavy_check_mark: Baixo;\
 :heavy_check_mark: Guitarra;\
-:heavy_check_mark: cavaquinho;\
+:heavy_check_mark: cavaquinho.
 
 ## :rocket: Tecnologias ##
 
@@ -107,11 +114,19 @@ As seguintes ferramentas usadas neste projeto:
 
 </p>
 
-## :white_check_mark: Requisitos ##
-
-Antes de inciar :checkered_flag:, você precisa ter [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) instalados.
 
 ## :checkered_flag: Iniciando ##
+
+### Rode sem a necessidade de instalar
+Acesse -> [**https://cordaria.com.br**](https://cordaria.com.br) <-
+
+Caso deseje colaborar conosco, siga as instruções abaixo:
+### :white_check_mark: Requisitos ###
+
+Antes de inciar &#xa0 :checkered_flag:, você precisa ter [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) instalados.
+
+Instruções para compilar (Documentação em inglês).
+
 
 ```bash
 # Clone este projeto
@@ -134,7 +149,7 @@ $ yarn start
 Este projeto esta sobre licença do MI. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
-Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">LU SACRAMENTO</a>
+Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">lusacramento</a>
 
 &#xa0;
 
