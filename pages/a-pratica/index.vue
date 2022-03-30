@@ -79,6 +79,7 @@ import CatJump from '@/components/cordaria/Tips'
 import ExerciseNav from '@/components/cordaria/ExerciseNav'
 import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
 import ScoreTerminal from '@/components/cordaria/Score'
+import Func from '@/plugins/functions'
 // import Score from '@/components/cordaria/Score'
 
 library.add([faStop])
@@ -153,8 +154,6 @@ export default {
       // Playing
       tempo: null,
       release: 1,
-      adjustSync: 1.1,
-
       score: 'Aguardando<br />para iniciar',
 
       fadeOutValue: 10,
@@ -306,8 +305,8 @@ export default {
       this.printLoad = 'Baralho embaralhado!'
 
       // generating audios sequence
-      this.tempo = this.convertBpmToMs()
-      this.release = this.calculateRelease()
+      this.tempo = Func.convertBpmToMs(this.bpm)
+      this.release = Func.calculateRelease(this.tempo)
       this.sequence = this.generateSequence()
 
       // preparing lesson screen
@@ -322,16 +321,9 @@ export default {
       this.isVisibleButtonStop = false
     },
 
-    // adjusting release (audio)
-    calculateRelease() {
-      const release = (this.tempo / 1000) * this.adjustSync
-      return release
-    },
-
-    // requiring Audio Files
     getAudios() {
       const urls = {}
-      for (let iString = 0; iString < this.instrumentMap.length; iString++) {
+      for (const iString in this.instrumentMap) {
         const fret = this.instrumentMap[iString]
         fret.forEach((element) => {
           urls[element.note] = `${element.tablature}.mp3`
@@ -417,7 +409,6 @@ export default {
 
     // selecting  first finger
     filterFinger(finger) {
-      // let startFinger = this.startFinger;ns
       return finger.value[0] === `${this.firstFinger}`
     },
 
@@ -425,7 +416,7 @@ export default {
     generateExercise() {
       let shadowDeck = this.deck.slice()
       for (let i = shadowDeck.length; i > 0; i--) {
-        const sortedIndex = this.sortIndex(i)
+        const sortedIndex = Func.sortIndex(i)
         const card = shadowDeck[sortedIndex]
         shadowDeck.push(card)
         shadowDeck.splice(sortedIndex, 1)
@@ -436,12 +427,12 @@ export default {
       return shadowDeck
     },
 
-    // auxiliary function to suffle cards
-    sortIndex(max) {
-      const min = Math.ceil(0)
-      max = Math.floor(max)
-      return Math.floor(Math.random() * (max - min + 1)) + min
-    },
+    // // auxiliary function to suffle cards
+    // sortIndex(max) {
+    //   const min = Math.ceil(0)
+    //   max = Math.floor(max)
+    //   return Math.floor(Math.random() * (max - min + 1)) + min
+    // },
 
     play() {
       const lengthValue = this.currentCard.value.length - 1
@@ -514,11 +505,6 @@ export default {
         iValue++
         return iValue
       }
-    },
-    // converting BPM to miliseconds
-    convertBpmToMs() {
-      const newTempo = 60000 / this.bpm
-      return newTempo
     },
 
     sendSequence() {
