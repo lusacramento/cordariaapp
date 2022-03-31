@@ -74,12 +74,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import * as Tone from 'tone' // to play the audios
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStop } from '@fortawesome/free-solid-svg-icons'
+import Func from '@/plugins/functions'
 
 import CatJump from '@/components/cordaria/Tips'
 import ExerciseNav from '@/components/cordaria/ExerciseNav'
 import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
 import ScoreTerminal from '@/components/cordaria/Score'
-import Func from '@/plugins/functions'
 // import Score from '@/components/cordaria/Score'
 
 library.add([faStop])
@@ -106,10 +106,12 @@ export default {
     return {
       lessons: lessons.lessons,
       deck: deck.deck,
-      acousticGuitar: acousticGuitar.guitarMap,
-      eletricGuitar: eletricGuitar.guitarMap,
-      cavaco: cavaco.cavacoMap,
-      bass: bass.bassMap,
+      instruments: {
+        acousticGuitar: acousticGuitar.guitarMap,
+        eletricGuitar: eletricGuitar.guitarMap,
+        cavaco: cavaco.cavacoMap,
+        bass: bass.bassMap,
+      },
       instrumentMap: null,
       tips: tips.tips,
 
@@ -253,26 +255,31 @@ export default {
       this.score = 'Carregando<br>...'
 
       // getting audios
+
       this.instrument = payload.instrument
+      this.instrumentMap = Func.selectInstrument(
+        this.instrument,
+        this.instruments
+      )
 
-      switch (this.instrument) {
-        case 'acoustic-guitar':
-          this.instrumentMap = this.acousticGuitar
-          break
-        case 'eletric-guitar':
-          this.instrumentMap = this.eletricGuitar
-          break
-        case 'cavaco':
-          this.instrumentMap = this.cavaco
-          break
-        case 'bass':
-          this.instrumentMap = this.bass
-          break
-        default:
-          break
-      }
+      // switch (this.instrument) {
+      //   case 'acoustic-guitar':
+      //     this.instrumentMap = this.acousticGuitar
+      //     break
+      //   case 'eletric-guitar':
+      //     this.instrumentMap = this.eletricGuitar
+      //     break
+      //   case 'cavaco':
+      //     this.instrumentMap = this.cavaco
+      //     break
+      //   case 'bass':
+      //     this.instrumentMap = this.bass
+      //     break
+      //   default:
+      //     break
+      // }
 
-      this.getAudios()
+      this.sampler = Func.getAudios(this.instrumentMap)
 
       // getting form data
       payload.view === 'mobile'
