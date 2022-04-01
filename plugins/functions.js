@@ -98,42 +98,42 @@ export default {
   },
 
   // setting case if all strings is selected.
-  allStringsConfig(stringNumber, allStrings) {
-    switch (stringNumber) {
+  allStringsConfig(settings) {
+    switch (settings.stringNumber) {
       case 'allUp':
-        stringNumber = 6
-        allStrings = true
+        settings.stringNumber = 6
+        settings.allStrings = true
         break
       case 'allDown':
-        stringNumber = 1
-        allStrings = true
+        settings.stringNumber = 1
+        settings.allStrings = true
         break
     }
-    return [stringNumber, allStrings]
+    return settings
   },
   // changing string
-  changingString(stringNumber, direction) {
-    switch (stringNumber) {
-      case 1:
-        direction = 'up'
-        break
-      case 6:
-        direction = 'down'
-        break
-      default:
-        break
-    }
+  // changingString(stringNumber, direction) {
+  //   switch (stringNumber) {
+  //     case 1:
+  //       direction = 'up'
+  //       break
+  //     case 6:
+  //       direction = 'down'
+  //       break
+  //     default:
+  //       break
+  //   }
 
-    switch (direction) {
-      case 'down':
-        stringNumber--
-        break
-      case 'up':
-        stringNumber++
-        break
-      default:
-        break
-    }
-    return [stringNumber, direction]
-  },
+  //   switch (direction) {
+  //     case 'down':
+  //       stringNumber--
+  //       break
+  //     case 'up':
+  //       stringNumber++
+  //       break
+  //     default:
+  //       break
+  //   }
+  //   return [stringNumber, direction]
+  // },
 }

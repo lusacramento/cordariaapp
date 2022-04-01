@@ -124,9 +124,9 @@ export default {
         firstFinger: null,
         stringNumber: '5',
         bpm: null,
+        allStrings: false,
       },
       instrument: null,
-      allString: false,
       direction: 'down',
 
       // Audios Exercise
@@ -262,44 +262,11 @@ export default {
         this.instruments
       )
 
-      // switch (this.instrument) {
-      //   case 'acoustic-guitar':
-      //     this.instrumentMap = this.acousticGuitar
-      //     break
-      //   case 'eletric-guitar':
-      //     this.instrumentMap = this.eletricGuitar
-      //     break
-      //   case 'cavaco':
-      //     this.instrumentMap = this.cavaco
-      //     break
-      //   case 'bass':
-      //     this.instrumentMap = this.bass
-      //     break
-      //   default:
-      //     break
-      // }
-
       this.sampler = Func.getAudios(this.instrumentMap)
 
       // getting form data
 
       this.settings = Func.getData(payload, this.settings, this.lessons)
-      // payload.view === 'mobile'
-      //   ? (this.isMobile = true)
-      //   : (this.isMobile = false)
-
-      // this.settings.lesson = payload.lesson
-
-      // if (payload.lesson !== 0) {
-      //   const lesson = payload.lesson.toString()
-      //   this.settings.firstFinger = this.lessons[lesson].firstFinger
-      //   this.settings.stringNumber = this.lessons[lesson].stringNumber
-      //   this.settings.bpm = this.lessons[lesson].bpm
-      // } else {
-      //   this.settings.firstFinger = payload.firstFinger
-      //   this.settings.stringNumber = payload.stringNumber
-      //   this.settings.bpm = payload.bpm
-      // }
 
       this.startTraining()
     },
@@ -372,20 +339,11 @@ export default {
 
     // generating audio sequence
     generateSequence() {
-      switch (this.settings.stringNumber) {
-        case 'allUp':
-          this.settings.stringNumber = 6
-          this.allString = true
-          break
-        case 'allDown':
-          this.settings.stringNumber = 1
-          this.allString = true
-          break
-      }
+      this.settings = Func.allStringsConfig(this.settings)
 
       const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
       this.suffledDeck.forEach((card) => {
-        if (this.allString) {
+        if (this.settings.allStrings) {
           card.fragments.forEach((fragments) => {
             const fragment = fragments.fragment
             notes.push(this.getNotes(fragment))
