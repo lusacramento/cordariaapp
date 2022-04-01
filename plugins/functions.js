@@ -1,3 +1,6 @@
+// Functions.js
+// This module contains the functions and methods used to run the application.
+
 // Math Functions
 import * as Tone from 'tone' // to play the audios
 
@@ -71,5 +74,66 @@ export default {
     }).toDestination()
 
     return sampler
+  },
+
+  // getting Data
+  getData(payload, settings, lessons) {
+    payload.view === 'mobile'
+      ? (settings.isMobile = true)
+      : (settings.isMobile = false)
+
+    settings.lesson = payload.lesson
+
+    if (payload.lesson !== 0) {
+      const lesson = payload.lesson.toString()
+      settings.firstFinger = lessons[lesson].firstFinger
+      settings.stringNumber = lessons[lesson].stringNumber
+      settings.bpm = lessons[lesson].bpm
+    } else {
+      settings.firstFinger = payload.firstFinger
+      settings.stringNumber = payload.stringNumber
+      settings.bpm = payload.bpm
+    }
+    return settings
+  },
+
+  // setting case if all strings is selected.
+  allStringsConfig(stringNumber, allStrings) {
+    switch (stringNumber) {
+      case 'allUp':
+        stringNumber = 6
+        allStrings = true
+        break
+      case 'allDown':
+        stringNumber = 1
+        allStrings = true
+        break
+    }
+    return [stringNumber, allStrings]
+  },
+  // changing string
+  changingString(stringNumber, direction) {
+    switch (stringNumber) {
+      case 1:
+        direction = 'up'
+        break
+      case 6:
+        direction = 'down'
+        break
+      default:
+        break
+    }
+
+    switch (direction) {
+      case 'down':
+        stringNumber--
+        break
+      case 'up':
+        stringNumber++
+        break
+      default:
+        break
+    }
+    return [stringNumber, direction]
   },
 }

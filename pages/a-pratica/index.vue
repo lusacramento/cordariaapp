@@ -58,7 +58,7 @@
             :current-card="currentCard"
             :next-card="nextCard"
             :suffled-deck="suffledDeck"
-            :is-mobile="isMobile"
+            :is-mobile="settings.isMobile"
           />
         </div>
       </div>
@@ -116,16 +116,16 @@ export default {
       tips: tips.tips,
 
       suffledDeck: null,
-      isMobile: null,
-
-      printLoad: '',
 
       // exercises
+      settings: {
+        isMobile: null,
+        lesson: null,
+        firstFinger: null,
+        stringNumber: '5',
+        bpm: null,
+      },
       instrument: null,
-      lesson: null,
-      firstFinger: null,
-      stringNumber: '5',
-      bpm: null,
       allString: false,
       direction: 'down',
 
@@ -282,24 +282,24 @@ export default {
       this.sampler = Func.getAudios(this.instrumentMap)
 
       // getting form data
-      payload.view === 'mobile'
-        ? (this.isMobile = true)
-        : (this.isMobile = false)
 
-      this.lesson = payload.lesson
+      this.settings = Func.getData(payload, this.settings, this.lessons)
+      // payload.view === 'mobile'
+      //   ? (this.isMobile = true)
+      //   : (this.isMobile = false)
 
-      if (payload.lesson !== 0) {
-        const lesson = payload.lesson.toString()
-        this.firstFinger = this.lessons[lesson].firstFinger
-        this.stringNumber = this.lessons[lesson].stringNumber
-        this.bpm = this.lessons[lesson].bpm
-      } else {
-        this.firstFinger = payload.firstFinger
-        this.stringNumber = payload.stringNumber
-        this.bpm = payload.bpm
-      }
+      // this.settings.lesson = payload.lesson
 
-      this.printLoad = 'CONFIGURAÇÃO DESTE EXERCÍCIO'
+      // if (payload.lesson !== 0) {
+      //   const lesson = payload.lesson.toString()
+      //   this.settings.firstFinger = this.lessons[lesson].firstFinger
+      //   this.settings.stringNumber = this.lessons[lesson].stringNumber
+      //   this.settings.bpm = this.lessons[lesson].bpm
+      // } else {
+      //   this.settings.firstFinger = payload.firstFinger
+      //   this.settings.stringNumber = payload.stringNumber
+      //   this.settings.bpm = payload.bpm
+      // }
 
       this.startTraining()
     },
@@ -309,10 +309,8 @@ export default {
       // suffling Deck
       this.suffledDeck = this.generateExercise()
 
-      this.printLoad = 'Baralho embaralhado!'
-
       // generating audios sequence
-      this.tempo = Func.convertBpmToMs(this.bpm)
+      this.tempo = Func.convertBpmToMs(this.settings.bpm)
       this.release = Func.calculateRelease(this.tempo)
       this.sequence = this.generateSequence()
 
@@ -350,37 +348,37 @@ export default {
     // requiring notes for generate sequence
     getNotes(fret) {
       let note = null
-      const strings = this.instrumentMap[this.stringNumber]
-      const tablature = this.stringNumber + fret
+      const strings = this.instrumentMap[this.settings.stringNumber]
+      const tablature = this.settings.stringNumber + fret
       note = strings[fret][tablature]
       return note
     },
 
     // changing string
     changingString() {
-      if (this.stringNumber === 1) {
+      if (this.settings.stringNumber === 1) {
         this.direction = 'up'
       }
       if (this.direction === 'down') {
-        this.stringNumber--
+        this.settings.stringNumber--
       }
       if (this.direction === 'up') {
-        this.stringNumber++
+        this.settings.stringNumber++
       }
-      if (this.stringNumber === 6) {
+      if (this.settings.stringNumber === 6) {
         this.direction = 'down'
       }
     },
 
     // generating audio sequence
     generateSequence() {
-      switch (this.stringNumber) {
+      switch (this.settings.stringNumber) {
         case 'allUp':
-          this.stringNumber = 6
+          this.settings.stringNumber = 6
           this.allString = true
           break
         case 'allDown':
-          this.stringNumber = 1
+          this.settings.stringNumber = 1
           this.allString = true
           break
       }
@@ -409,14 +407,14 @@ export default {
         '4n'
       )
       seq.loop = false
-      Tone.Transport.bpm.value = this.bpm
+      Tone.Transport.bpm.value = this.settings.bpm
       Tone.Transport.start()
       return seq
     },
 
     // selecting  first finger
     filterFinger(finger) {
-      return finger.value[0] === `${this.firstFinger}`
+      return finger.value[0] === `${this.settings.firstFinger}`
     },
 
     // generating visual cards
@@ -433,13 +431,6 @@ export default {
 
       return shadowDeck
     },
-
-    // // auxiliary function to suffle cards
-    // sortIndex(max) {
-    //   const min = Math.ceil(0)
-    //   max = Math.floor(max)
-    //   return Math.floor(Math.random() * (max - min + 1)) + min
-    // },
 
     play() {
       const lengthValue = this.currentCard.value.length - 1
