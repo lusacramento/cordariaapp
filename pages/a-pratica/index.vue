@@ -126,6 +126,7 @@ export default {
         bpm: null,
         allStrings: false,
         direction: 'down',
+        release: 1,
       },
       instrument: null,
 
@@ -155,7 +156,6 @@ export default {
 
       // Playing
       tempo: null,
-      release: 1,
       score: 'Aguardando<br />para iniciar',
 
       fadeOutValue: 10,
@@ -247,14 +247,8 @@ export default {
       // hide Menu
       this.isEnabledMenu = payload.isEnabledMenu
 
-      // starting Audio library
-      if (Tone.context.state !== 'running') {
-        Tone.context.resume()
-      }
       this.isVisibleButtonPlay = false
       this.score = 'Carregando<br>...'
-
-      // getting audios
 
       this.instrument = payload.instrument
       this.instrumentMap = Func.selectInstrument(
@@ -262,6 +256,7 @@ export default {
         this.instruments
       )
 
+      // getting audios
       this.sampler = Func.getAudios(this.instrumentMap)
 
       // getting form data
@@ -278,8 +273,15 @@ export default {
 
       // generating audios sequence
       this.tempo = Func.convertBpmToMs(this.settings.bpm)
-      this.release = Func.calculateRelease(this.tempo)
+      this.settings.release = Func.calculateRelease(this.tempo)
       this.sequence = this.generateSequence()
+
+      // this.sequence = Func.generateSequence(
+      //   this.suffledDeck,
+      //   this.settings,
+      //   this.sampler,
+      //   this.instrumentMap
+      // )
 
       // preparing lesson screen
       this.currentCard = this.suffledDeck[0]
@@ -313,28 +315,13 @@ export default {
     },
 
     // requiring notes for generate sequence
-    getNotes(fret) {
+    getNotes(fragment) {
+      const fret = fragment
       let note = null
       const strings = this.instrumentMap[this.settings.stringNumber]
       const tablature = this.settings.stringNumber + fret
       note = strings[fret][tablature]
       return note
-    },
-
-    // changing string
-    changingString() {
-      if (this.settings.stringNumber === 1) {
-        this.settings.direction = 'up'
-      }
-      if (this.settings.direction === 'down') {
-        this.settings.stringNumber--
-      }
-      if (this.settings.direction === 'up') {
-        this.settings.stringNumber++
-      }
-      if (this.settings.stringNumber === 6) {
-        this.settings.direction = 'down'
-      }
     },
 
     // generating audio sequence
@@ -347,21 +334,25 @@ export default {
         if (this.settings.allStrings) {
           card.fragments.forEach((fragments) => {
             const fragment = fragments.fragment
-            notes.push(this.getNotes(fragment))
+            notes.push(
+              Func.getNotes(fragment, this.instrumentMap, this.settings)
+            )
           })
-          // this.changingString()
+          // changing string
           this.settings = Func.changingString(this.settings)
         } else {
           card.fragments.forEach((fragments) => {
             const fragment = fragments.fragment
-            notes.push(this.getNotes(fragment))
+            notes.push(
+              Func.getNotes(fragment, this.instrumentMap, this.settings)
+            )
           })
         }
       })
 
       const seq = new Tone.Sequence(
         (time, note) => {
-          this.sampler.triggerAttackRelease(note, this.release, time)
+          this.sampler.triggerAttackRelease(note, this.settings.release, time)
         },
         notes,
         '4n'

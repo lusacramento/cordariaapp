@@ -51,7 +51,10 @@ export default {
   },
 
   // getting audios
+
   getAudios(instrumentMap) {
+    // starting Audio library
+
     if (Tone.context.state !== 'running') {
       Tone.context.resume()
     }
@@ -135,5 +138,49 @@ export default {
         break
     }
     return settings
+  },
+
+  // generatting sequence
+  generateSequence(suffledDeck, settings, sampler, instrumentMap) {
+    // config if all strings enable
+    settings = this.allStringsConfig(settings)
+
+    const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
+    suffledDeck.forEach((card) => {
+      if (settings.allStrings) {
+        card.fragments.forEach((fragments) => {
+          const fragment = fragments.fragment
+          notes.push(this.getNotes(fragment, instrumentMap, settings))
+        })
+        // changing string
+        settings = this.changingString(settings)
+      } else {
+        card.fragments.forEach((fragments) => {
+          const fragment = fragments.fragment
+          notes.push(this.getNotes(fragment))
+        })
+      }
+    })
+
+    const seq = new Tone.Sequence(
+      (time, note) => {
+        sampler.triggerAttackRelease(note, settings.release, time)
+      },
+      notes,
+      '4n'
+    )
+    seq.loop = false
+    Tone.Transport.bpm.value = settings.bpm
+    Tone.Transport.start()
+    return seq
+  },
+
+  getNotes(fragment, instrumentMap, settings) {
+    const fret = fragment
+    let note = null
+    const strings = instrumentMap[settings.stringNumber]
+    const tablature = settings.stringNumber + fret
+    note = strings[fret][tablature]
+    return note
   },
 }
