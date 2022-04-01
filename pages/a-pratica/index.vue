@@ -125,9 +125,9 @@ export default {
         stringNumber: '5',
         bpm: null,
         allStrings: false,
+        direction: 'down',
       },
       instrument: null,
-      direction: 'down',
 
       // Audios Exercise
       sequence: null,
@@ -324,21 +324,22 @@ export default {
     // changing string
     changingString() {
       if (this.settings.stringNumber === 1) {
-        this.direction = 'up'
+        this.settings.direction = 'up'
       }
-      if (this.direction === 'down') {
+      if (this.settings.direction === 'down') {
         this.settings.stringNumber--
       }
-      if (this.direction === 'up') {
+      if (this.settings.direction === 'up') {
         this.settings.stringNumber++
       }
       if (this.settings.stringNumber === 6) {
-        this.direction = 'down'
+        this.settings.direction = 'down'
       }
     },
 
     // generating audio sequence
     generateSequence() {
+      // config if all strings enable
       this.settings = Func.allStringsConfig(this.settings)
 
       const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
@@ -348,7 +349,8 @@ export default {
             const fragment = fragments.fragment
             notes.push(this.getNotes(fragment))
           })
-          this.changingString()
+          // this.changingString()
+          this.settings = Func.changingString(this.settings)
         } else {
           card.fragments.forEach((fragments) => {
             const fragment = fragments.fragment

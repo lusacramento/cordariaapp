@@ -112,28 +112,28 @@ export default {
     return settings
   },
   // changing string
-  // changingString(stringNumber, direction) {
-  //   switch (stringNumber) {
-  //     case 1:
-  //       direction = 'up'
-  //       break
-  //     case 6:
-  //       direction = 'down'
-  //       break
-  //     default:
-  //       break
-  //   }
+  changingString(settings) {
+    switch (settings.stringNumber) {
+      case 1:
+        settings.direction = 'up'
+        break
+      case 6:
+        settings.direction = 'down'
+        break
+      default:
+        break
+    }
 
-  //   switch (direction) {
-  //     case 'down':
-  //       stringNumber--
-  //       break
-  //     case 'up':
-  //       stringNumber++
-  //       break
-  //     default:
-  //       break
-  //   }
-  //   return [stringNumber, direction]
-  // },
+    switch (settings.direction) {
+      case 'down':
+        settings.stringNumber--
+        break
+      case 'up':
+        settings.stringNumber++
+        break
+      default:
+        break
+    }
+    return settings
+  },
 }
