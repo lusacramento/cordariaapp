@@ -141,12 +141,12 @@ export default {
   },
 
   // generatting sequence
-  generateSequence(suffledDeck, settings, sampler, instrumentMap) {
+  generateSequence(settings, deck, instrumentMap, sampler) {
     // config if all strings enable
     settings = this.allStringsConfig(settings)
 
     const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
-    suffledDeck.forEach((card) => {
+    deck.forEach((card) => {
       if (settings.allStrings) {
         card.fragments.forEach((fragments) => {
           const fragment = fragments.fragment
@@ -157,7 +157,7 @@ export default {
       } else {
         card.fragments.forEach((fragments) => {
           const fragment = fragments.fragment
-          notes.push(this.getNotes(fragment))
+          notes.push(this.getNotes(fragment, instrumentMap, settings))
         })
       }
     })
@@ -187,10 +187,9 @@ export default {
   // selecting  first finger
   filterFinger(firstFinger) {
     return function filter(finger) {
+      // convert number values of string values
       const value = finger.value[0].toString()
       const filter = firstFinger.toString()
-      // eslint-disable-next-line no-console
-      console.warn(`firstFinger: ${filter} - finger: ${value} `)
       return value === filter
     }
   },

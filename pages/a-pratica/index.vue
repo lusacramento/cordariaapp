@@ -71,7 +71,6 @@
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import * as Tone from 'tone' // to play the audios
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStop } from '@fortawesome/free-solid-svg-icons'
 import Func from '@/plugins/functions'
@@ -277,14 +276,12 @@ export default {
       // generating audios sequence
       this.tempo = Func.convertBpmToMs(this.settings.bpm)
       this.settings.release = Func.calculateRelease(this.tempo)
-      this.sequence = this.generateSequence()
-
-      // this.sequence = Func.generateSequence(
-      //   this.suffledDeck,
-      //   this.settings,
-      //   this.sampler,
-      //   this.instrumentMap
-      // )
+      this.sequence = Func.generateSequence(
+        this.settings,
+        this.suffledDeck,
+        this.instrumentMap,
+        this.sampler
+      )
 
       // preparing lesson screen
       this.currentCard = this.suffledDeck[0]
@@ -296,74 +293,6 @@ export default {
       // starting practice
       this.timer = setInterval(this.play, this.tempo)
       this.isVisibleButtonStop = false
-    },
-
-    getAudios() {
-      const urls = {}
-      for (const iString in this.instrumentMap) {
-        const fret = this.instrumentMap[iString]
-        fret.forEach((element) => {
-          urls[element.note] = `${element.tablature}.mp3`
-        })
-      }
-
-      const instrumentUrl = this.instrumentMap[0][0].baseUrl
-      this.sampler = new Tone.Sampler({
-        urls,
-        baseUrl: instrumentUrl,
-        onload: () => {
-          this.isLoaded = true
-        },
-      }).toDestination()
-    },
-
-    // requiring notes for generate sequence
-    getNotes(fragment) {
-      const fret = fragment
-      let note = null
-      const strings = this.instrumentMap[this.settings.stringNumber]
-      const tablature = this.settings.stringNumber + fret
-      note = strings[fret][tablature]
-      return note
-    },
-
-    // generating audio sequence
-    generateSequence() {
-      // config if all strings enable
-      this.settings = Func.allStringsConfig(this.settings)
-
-      const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
-      this.suffledDeck.forEach((card) => {
-        if (this.settings.allStrings) {
-          card.fragments.forEach((fragments) => {
-            const fragment = fragments.fragment
-            notes.push(
-              Func.getNotes(fragment, this.instrumentMap, this.settings)
-            )
-          })
-          // changing string
-          this.settings = Func.changingString(this.settings)
-        } else {
-          card.fragments.forEach((fragments) => {
-            const fragment = fragments.fragment
-            notes.push(
-              Func.getNotes(fragment, this.instrumentMap, this.settings)
-            )
-          })
-        }
-      })
-
-      const seq = new Tone.Sequence(
-        (time, note) => {
-          this.sampler.triggerAttackRelease(note, this.settings.release, time)
-        },
-        notes,
-        '4n'
-      )
-      seq.loop = false
-      Tone.Transport.bpm.value = this.settings.bpm
-      Tone.Transport.start()
-      return seq
     },
 
     play() {
