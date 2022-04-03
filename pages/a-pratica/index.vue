@@ -54,9 +54,9 @@
       <div class="col-lg-10 layer-center">
         <div class="exercise-screen">
           <ExerciseScreen
-            :prev-card="prevCard"
-            :current-card="currentCard"
-            :next-card="nextCard"
+            :prev-card="card.prev"
+            :current-card="card.current"
+            :next-card="card.next"
             :suffled-deck="suffledDeck"
             :is-mobile="settings.isMobile"
           />
@@ -133,12 +133,11 @@ export default {
       sequence: null,
 
       // Cards
-      prevCard: {},
-      currentCard: {},
-      nextCard: {},
-      isPastCard: false,
-      isCurrentCard: false,
-      isFuterCard: false,
+      card: {
+        prev: {},
+        current: {},
+        next: {},
+      },
 
       // Show Buttons
       isVisibleButtonPlay: false,
@@ -212,17 +211,10 @@ export default {
       return newSuffledDeck
     },
 
-    prevCard(newPrevCard) {
-      return newPrevCard
+    card(newCard) {
+      return newCard
     },
 
-    currentCard(newCurrentCard) {
-      return newCurrentCard
-    },
-
-    nextCard(newNextCard) {
-      return newNextCard
-    },
     tempo(newTempo) {
       return newTempo
     },
@@ -284,11 +276,11 @@ export default {
       )
 
       // preparing lesson screen
-      this.currentCard = this.suffledDeck[0]
-      this.nextCard = this.suffledDeck[1]
+      this.card.current = this.suffledDeck[0]
+      this.card.next = this.suffledDeck[1]
 
       this.lengthSuffledDeck = this.suffledDeck.length
-      this.preCount = this.currentCard.fragments.length
+      this.preCount = this.card.current.fragments.length
 
       // starting practice
       this.timer = setInterval(this.play, this.tempo)
@@ -296,7 +288,7 @@ export default {
     },
 
     play() {
-      const lengthValue = this.currentCard.value.length - 1
+      const lengthValue = this.card.current.value.length - 1
       this.sendSequence()
       this.sequence.start()
       this.isVisibleButtonStop = true
@@ -327,11 +319,11 @@ export default {
     startAnimateCards(iCard) {
       iCard++
       const next = iCard + 1
-      this.prevCard = this.currentCard
-      this.currentCard = this.nextCard
+      this.card.prev = this.card.current
+      this.card.current = this.card.next
       next < this.lengthSuffledDeck
-        ? (this.nextCard = this.suffledDeck[next])
-        : (this.nextCard = {})
+        ? (this.card.next = this.suffledDeck[next])
+        : (this.card.next = {})
       this.suffledDeck[this.iCard].isPastCard = true
       this.suffledDeck[this.iCard].isCurrentCard = false
 
@@ -340,26 +332,26 @@ export default {
 
     startAnimateValues(iValue, iCard) {
       if (iCard === this.lengthSuffledDeck) {
-        const prevCardLenght = this.prevCard.width - 1
-        this.prevCard.fragments[prevCardLenght].isHighlight = false
+        const prevCardLenght = this.card.prev.width - 1
+        this.card.prev.fragments[prevCardLenght].isHighlight = false
 
         this.score = 'Lição<br />finalizada!'
         clearInterval(this.timer)
       } else {
         this.suffledDeck[this.iCard].isFutureCard = false
         this.suffledDeck[this.iCard].isCurrentCard = true
-        const fragmentCurrent = this.currentCard.fragments[iValue]
+        const fragmentCurrent = this.card.current.fragments[iValue]
         let fragmentPrev = null
 
         if (iCard > 0 && iValue === 0) {
-          const lastIndexPrev = this.prevCard.width - 1
-          fragmentPrev = this.prevCard.fragments[lastIndexPrev]
+          const lastIndexPrev = this.card.prev.width - 1
+          fragmentPrev = this.card.prev.fragments[lastIndexPrev]
 
-          this.prevCard.fragments[lastIndexPrev].isHighlight = false
+          this.card.prev.fragments[lastIndexPrev].isHighlight = false
         }
 
         if (iValue !== 0) {
-          fragmentPrev = this.currentCard.fragments[iValue - 1]
+          fragmentPrev = this.card.current.fragments[iValue - 1]
           fragmentPrev.isHighlight = false
         }
         fragmentCurrent.isHighlight = true
@@ -378,9 +370,9 @@ export default {
         this.sequence.stop()
         this.isVisibleButtonStop = false
         this.score = 'Aguardando<br />...'
-        this.prevCard = {}
-        this.currentCard = {}
-        this.nextCard = {}
+        this.card.prev = {}
+        this.card.current = {}
+        this.card.next = {}
         this.suffledDeck.length = 0
         this.isVisibleButtonPlay = true
       }
