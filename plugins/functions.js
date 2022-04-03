@@ -183,4 +183,14 @@ export default {
     note = strings[fret][tablature]
     return note
   },
+
+  filterFinger(firstFinger) {
+    return function filter(finger) {
+      const value = finger.value[0].toString()
+      const filter = firstFinger.toString()
+      // eslint-disable-next-line no-console
+      console.warn(`firstFinger: ${filter} - finger: ${value} `)
+      return value === filter
+    }
+  },
 }
