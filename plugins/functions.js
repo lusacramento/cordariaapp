@@ -184,6 +184,7 @@ export default {
     return note
   },
 
+  // selecting  first finger
   filterFinger(firstFinger) {
     return function filter(finger) {
       const value = finger.value[0].toString()
@@ -192,5 +193,20 @@ export default {
       console.warn(`firstFinger: ${filter} - finger: ${value} `)
       return value === filter
     }
+  },
+
+  // generating visual cards
+  generateExercise(deck, firstFinger) {
+    let shadowDeck = deck.slice()
+    for (let i = shadowDeck.length; i > 0; i--) {
+      const sortedIndex = this.sortIndex(i)
+      const card = shadowDeck[sortedIndex]
+      shadowDeck.push(card)
+      shadowDeck.splice(sortedIndex, 1)
+    }
+
+    shadowDeck = shadowDeck.filter(this.filterFinger(firstFinger))
+
+    return shadowDeck
   },
 }

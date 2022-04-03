@@ -269,9 +269,10 @@ export default {
     // Main Method
     startTraining() {
       // suffling Deck
-      this.suffledDeck = this.generateExercise()
-      // eslint-disable-next-line no-console
-      console.warn('suffledDeck:', this.suffledDeck)
+      this.suffledDeck = Func.generateExercise(
+        this.deck,
+        this.settings.firstFinger
+      )
 
       // generating audios sequence
       this.tempo = Func.convertBpmToMs(this.settings.bpm)
@@ -363,30 +364,6 @@ export default {
       Tone.Transport.bpm.value = this.settings.bpm
       Tone.Transport.start()
       return seq
-    },
-
-    // selecting  first finger
-    filterFinger(firstFinger) {
-      return function filter(finger) {
-        return finger.value[0] === this.firstFinger
-      }
-    },
-
-    // generating visual cards
-    generateExercise() {
-      let shadowDeck = this.deck.slice()
-      for (let i = shadowDeck.length; i > 0; i--) {
-        const sortedIndex = Func.sortIndex(i)
-        const card = shadowDeck[sortedIndex]
-        shadowDeck.push(card)
-        shadowDeck.splice(sortedIndex, 1)
-      }
-
-      shadowDeck = shadowDeck.filter(
-        Func.filterFinger(this.settings.firstFinger)
-      )
-
-      return shadowDeck
     },
 
     play() {
