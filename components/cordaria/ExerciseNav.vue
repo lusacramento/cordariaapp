@@ -19,14 +19,9 @@
         class="controls justify-self-center"
       >
         <option value="acoustic-guitar">Violão</option>
-        <option value="cavaco">
-          Cavaquinho
-          <span class="new">novo!</span>
-        </option>
-        <option value="eletric-guitar">
-          Guitarra <span class="new">novo!</span>
-        </option>
-        <option value="bass">Baixo <span class="new">novo!</span></option>
+        <option value="cavaco">Cavaquinho</option>
+        <option value="eletric-guitar">Guitarra</option>
+        <option value="bass">Baixo</option>
       </select>
     </div>
 
