@@ -20,38 +20,34 @@
 </template>
 
 <script>
-import CardFragment from "./CardFragment";
+import CardFragment from './CardFragment'
 
 export default {
+  name: 'CardExercise',
   components: { CardFragment },
   props: {
     card: {
       type: Object,
-      default: null
-    }, 
-    key: {
+      default: null,
+    },
+    id: {
       type: String,
-      default: null
-      },
-      id: {
-        type: String,
-        default: null,
-      },
-      fragment: {
-        type: Number,
-        default: null
-        },
+      default: null,
+    },
+    fragment: {
+      type: Number,
+      default: null,
+    },
   },
-
 
   data() {
     return {
       isPastCardColor: true,
       isCurrentCardColor: false,
       isFutureCardColor: true,
-    };
+    }
   },
-};
+}
 </script>
 
 <style>
@@ -65,14 +61,14 @@ div.card {
 /* color mobile view */
 #prev-card,
 .pastCardColor {
-  font-family: "Encode Sans";
+  font-family: 'Encode Sans';
   font-weight: var(--font-bold);
   color: rgba(27, 20, 4, 0.5);
   background-color: #b4423f !important;
 }
 #current-card,
 .currentCardColor {
-  font-family: "Encode Sans";
+  font-family: 'Encode Sans';
   font-weight: var(--font-black);
   background-color: #ffd740 !important;
   color: rgb(27, 20, 4);
@@ -85,7 +81,7 @@ div.card {
 
 #next-card,
 .futureCardColor {
-  font-family: "Encode Sans";
+  font-family: 'Encode Sans';
   font-weight: var(--font-bold);
   background-color: #39c2a1 !important;
   color: rgba(27, 20, 4, 0.9);
