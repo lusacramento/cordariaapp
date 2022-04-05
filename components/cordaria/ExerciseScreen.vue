@@ -3,18 +3,18 @@
     <div class="container-fluid mt-3">
       <div v-if="isMobile">
         <div class="row mt-4 d-flex align-items-center justify-content-around">
-          <Card id="prev-card" key="999" :card="prevCard" />
-          <Card id="current-card" key="998" :card="currentCard" />
-          <Card id="next-card" key="997" :card="nextCard" />
+          <Card id="prev-card" key="999" :card="card.prev" />
+          <Card id="current-card" key="998" :card="card.current" />
+          <Card id="next-card" key="997" :card="card.next" />
         </div>
       </div>
       <div v-if="!isMobile">
         <div class="row align-items-center">
           <Card
-            v-for="(card, i) in suffledDeck"
-            :id="card.id"
-            :key="card + ' ' + i"
-            :card="card"
+            v-for="(cardDeck, i) in suffledDeck"
+            :id="cardDeck.id"
+            :key="cardDeck + ' ' + i"
+            :card="cardDeck"
             class="card cardView"
           />
         </div>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Card from "@/components/cordaria/cards/Card";
+import Card from '@/components/cordaria/cards/Card'
 
 export default {
   components: { Card },
@@ -32,33 +32,22 @@ export default {
     suffledDeck: {
       type: Array,
       default() {
-        return [];
+        return []
       },
     },
-    prevCard: {
+    card: {
       type: Object,
       default() {
-        return {};
+        return {}
       },
     },
-    currentCard: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-    nextCard: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
+
     isMobile: {
       type: Boolean,
     },
     showExercise: Boolean,
   },
-};
+}
 </script>
 
 <style>

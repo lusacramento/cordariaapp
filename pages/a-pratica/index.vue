@@ -54,9 +54,7 @@
       <div class="col-lg-10 layer-center">
         <div class="exercise-screen">
           <ExerciseScreen
-            :prev-card="card.prev"
-            :current-card="card.current"
-            :next-card="card.next"
+            :card="card"
             :suffled-deck="suffledDeck"
             :is-mobile="settings.isMobile"
           />
@@ -74,6 +72,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStop } from '@fortawesome/free-solid-svg-icons'
 import Func from '@/plugins/functions'
+import Animate from '@/plugins/animate'
 
 import CatJump from '@/components/cordaria/Tips'
 import ExerciseNav from '@/components/cordaria/ExerciseNav'
@@ -139,19 +138,21 @@ export default {
         next: {},
       },
 
+      // Indexes
+      i: {
+        preCount: 4,
+        cardValue: 0,
+      },
+      lengthSuffledDeck: 0,
+      iCard: 0,
+      // iValue: 0,
+
+      swapCard: false,
+
       // Show Buttons
       isVisibleButtonPlay: false,
       isVisibleButtonStop: false,
       iconStop: 'stop',
-
-      // Indexes
-      preCount: 4,
-      lengthSuffledDeck: 0,
-      iCard: 0,
-      iValue: 0,
-
-      swapCard: false,
-
       // Playing
       tempo: null,
       score: 'Aguardando<br />para iniciar',
@@ -199,8 +200,8 @@ export default {
   },
 
   watch: {
-    preCount(newPreCount) {
-      return newPreCount
+    i(newI) {
+      return newI
     },
 
     score(newScore) {
@@ -280,7 +281,7 @@ export default {
       this.card.next = this.suffledDeck[1]
 
       this.lengthSuffledDeck = this.suffledDeck.length
-      this.preCount = this.card.current.fragments.length
+      this.i.preCount = this.card.current.fragments.length
 
       // starting practice
       this.timer = setInterval(this.play, this.tempo)
@@ -288,27 +289,35 @@ export default {
     },
 
     play() {
-      const lengthValue = this.card.current.value.length - 1
+      const lengthCardValue = this.card.current.value.length - 1
       this.sendSequence()
       this.sequence.start()
       this.isVisibleButtonStop = true
 
-      if (this.preCount > 0) {
-        this.score = `Iniciando em <br /><b>${this.preCount}!</b>`
+      if (this.i.preCount > 0) {
+        this.score = `Iniciando em <br /><b>${this.i.preCount}!</b>`
 
-        this.preCount = this.preCount - 1
+        this.i.preCount = this.i.preCount - 1
       } else if (this.iCard <= this.lengthSuffledDeck) {
         this.score = `<b>Executando<br /></b>...`
 
         if (this.swapCard) {
           this.iCard = this.startAnimateCards(this.iCard)
 
-          this.iValue = 0
+          this.i.cardValue = 0
         }
 
-        this.iValue = this.startAnimateValues(this.iValue, this.iCard)
+        this.i.cardValue = Animate.startAnimateValues(
+          this.i.cardValue,
+          this.iCard,
+          this.lengthSuffledDeck,
+          this.card,
+          this.suffledDeck,
+          this.score,
+          this.timer
+        )
 
-        if (this.iValue > lengthValue) {
+        if (this.i.cardValue > lengthCardValue) {
           this.swapCard = true
         } else {
           this.swapCard = false
@@ -328,36 +337,6 @@ export default {
       this.suffledDeck[this.iCard].isCurrentCard = false
 
       return iCard
-    },
-
-    startAnimateValues(iValue, iCard) {
-      if (iCard === this.lengthSuffledDeck) {
-        const prevCardLenght = this.card.prev.width - 1
-        this.card.prev.fragments[prevCardLenght].isHighlight = false
-
-        this.score = 'Lição<br />finalizada!'
-        clearInterval(this.timer)
-      } else {
-        this.suffledDeck[this.iCard].isFutureCard = false
-        this.suffledDeck[this.iCard].isCurrentCard = true
-        const fragmentCurrent = this.card.current.fragments[iValue]
-        let fragmentPrev = null
-
-        if (iCard > 0 && iValue === 0) {
-          const lastIndexPrev = this.card.prev.width - 1
-          fragmentPrev = this.card.prev.fragments[lastIndexPrev]
-
-          this.card.prev.fragments[lastIndexPrev].isHighlight = false
-        }
-
-        if (iValue !== 0) {
-          fragmentPrev = this.card.current.fragments[iValue - 1]
-          fragmentPrev.isHighlight = false
-        }
-        fragmentCurrent.isHighlight = true
-        iValue++
-        return iValue
-      }
     },
 
     sendSequence() {
