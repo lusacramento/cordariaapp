@@ -1,14 +1,34 @@
 <template>
-  <div :id="id" :key="id" class="card-fragment p-1" :class="{ highlight: isHighlight }">
+  <div
+    :id="id"
+    :key="id"
+    class="card-fragment p-1"
+    :class="{ highlight: isHighlight }"
+  >
     {{ fragment }}
   </div>
 </template>
 
 <script>
-import "@/assets/animate/animate.min.css";
+import '@/assets/animate/animate.min.css'
 export default {
-  props: ["fragment", "key", "id", "isHighlight"],
-};
+  name: 'CardFragment',
+  props: {
+    id: {
+      type: String,
+      default() {
+        return ''
+      },
+    },
+    fragment: {
+      type: String,
+      default() {
+        return ''
+      },
+    },
+    isHighlight: Boolean,
+  },
+}
 </script>
 
 <style>
