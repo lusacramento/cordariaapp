@@ -284,11 +284,11 @@ export default {
       this.i.preCount = this.card.current.fragments.length
 
       // starting practice
-      this.timer = setInterval(this.play, this.tempo)
+      this.timer = setInterval(this.animateCards, this.tempo)
       this.isVisibleButtonStop = false
     },
 
-    play() {
+    animateCards() {
       const lengthCardValue = this.card.current.value.length - 1
       this.sendSequence()
       this.sequence.start()
@@ -302,7 +302,12 @@ export default {
         this.score = `<b>Executando<br /></b>...`
 
         if (this.swapCard) {
-          this.iCard = this.startAnimateCards(this.iCard)
+          this.iCard = Animate.startAnimateCards(
+            this.iCard,
+            this.card,
+            this.suffledDeck,
+            this.lengthSuffledDeck
+          )
 
           this.i.cardValue = 0
         }
@@ -314,7 +319,7 @@ export default {
           this.card,
           this.suffledDeck,
           this.score,
-          this.timer
+          this.finish
         )
 
         if (this.i.cardValue > lengthCardValue) {
@@ -325,22 +330,13 @@ export default {
       }
     },
 
-    startAnimateCards(iCard) {
-      iCard++
-      const next = iCard + 1
-      this.card.prev = this.card.current
-      this.card.current = this.card.next
-      next < this.lengthSuffledDeck
-        ? (this.card.next = this.suffledDeck[next])
-        : (this.card.next = {})
-      this.suffledDeck[this.iCard].isPastCard = true
-      this.suffledDeck[this.iCard].isCurrentCard = false
-
-      return iCard
-    },
-
     sendSequence() {
       this.$emit('sequence', this.sequence)
+    },
+
+    finish() {
+      clearInterval(this.timer)
+      this.score = 'Parabéns!<br />Treinamento concluído.'
     },
 
     stop(isResetRouter) {

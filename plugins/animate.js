@@ -1,4 +1,18 @@
 export default {
+  startAnimateCards(iCard, card, suffledDeck, lengthSuffledDeck) {
+    iCard++
+    const next = iCard + 1
+    card.prev = card.current
+    card.current = card.next
+    next < lengthSuffledDeck
+      ? (card.next = suffledDeck[next])
+      : (card.next = {})
+    suffledDeck[iCard - 1].isPastCard = true
+    suffledDeck[iCard - 1].isCurrentCard = false
+
+    return iCard
+  },
+
   startAnimateValues(
     iValue,
     iCard,
@@ -6,14 +20,13 @@ export default {
     card,
     suffledDeck,
     score,
-    timer
+    finish
   ) {
     // test if end deck
     if (iCard === lengthSuffledDeck) {
       const lenghtPrevCard = card.prev.width - 1
       card.prev.fragments[lenghtPrevCard].isHighlight = false
-      score = 'Lição<br />finalizada!'
-      clearInterval(timer)
+      finish()
     } else {
       suffledDeck[iCard].isFutureCard = false
       suffledDeck[iCard].isCurrentCard = true
