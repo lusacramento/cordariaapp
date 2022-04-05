@@ -18,7 +18,7 @@
               <ExerciseNav
                 :lessons="lessons"
                 :is-visible-button-play="isVisibleButtonPlay"
-                :is-visible-button-stop="isVisibleButtonStop"
+                :is-visible-button-stop="isVisibleStopButton"
                 :stop="stop"
                 :score="score"
                 @props="load"
@@ -35,7 +35,7 @@
         <div class="col-12 col-lg-4 d-flex justify-content-center">
           <ScoreTerminal :score="score" />
           <button
-            v-if="isVisibleButtonStop"
+            v-if="isVisibleStopButton"
             type="button"
             class="
               btn btn-danger btn-controls
@@ -68,12 +68,16 @@
 </template>
 
 <script>
+// stop button
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStop } from '@fortawesome/free-solid-svg-icons'
+
+// modules and functions
 import Func from '@/plugins/functions'
 import Animate from '@/plugins/animate'
 
+// components
 import CatJump from '@/components/cordaria/Tips'
 import ExerciseNav from '@/components/cordaria/ExerciseNav'
 import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
@@ -102,8 +106,13 @@ export default {
     const tips = await $http.$get('./json/tips.json')
 
     return {
+      // predefined lessons
       lessons: lessons.lessons,
+
+      // full deck
       deck: deck.deck,
+
+      // instruments maps
       instruments: {
         acousticGuitar: acousticGuitar.guitarMap,
         eletricGuitar: eletricGuitar.guitarMap,
@@ -111,11 +120,14 @@ export default {
         bass: bass.bassMap,
       },
       instrumentMap: null,
+
+      // tips popup
       tips: tips.tips,
 
+      // filtered deck
       suffledDeck: null,
 
-      // exercises
+      // exercises settings
       settings: {
         isMobile: null,
         lesson: null,
@@ -128,10 +140,10 @@ export default {
       },
       instrument: null,
 
-      // Audios Exercise
+      // Audios sequence
       sequence: null,
 
-      // Cards
+      // Cards and yours pointers
       card: {
         prev: {},
         current: {},
@@ -151,15 +163,16 @@ export default {
 
       // Show Buttons
       isVisibleButtonPlay: false,
-      isVisibleButtonStop: false,
+      isVisibleStopButton: false,
       iconStop: 'stop',
+
       // Playing
       tempo: null,
+
+      // score painel
       score: 'Aguardando<br />para iniciar',
 
       fadeOutValue: 10,
-
-      isStopSequence: false,
 
       // Menu
       isEnabledMenu: true,
@@ -232,9 +245,6 @@ export default {
     this.stop(true)
   },
   methods: {
-    showMenu() {
-      this.isCollapse = !this.isCollapse
-    },
     load(payload) {
       // hide Menu
       this.isEnabledMenu = payload.isEnabledMenu
@@ -242,6 +252,7 @@ export default {
       this.isVisibleButtonPlay = false
       this.score = 'Carregando<br>...'
 
+      // getting selected instrument
       this.instrument = payload.instrument
       this.instrumentMap = Func.selectInstrument(
         this.instrument,
@@ -252,7 +263,6 @@ export default {
       this.sampler = Func.getAudios(this.instrumentMap)
 
       // getting form data
-
       this.settings = Func.getData(payload, this.settings, this.lessons)
 
       this.startTraining()
@@ -284,24 +294,32 @@ export default {
       this.i.preCount = this.card.current.fragments.length
 
       // starting practice
-      this.timer = setInterval(this.animateCards, this.tempo)
-      this.isVisibleButtonStop = false
+      this.timer = setInterval(this.practice, this.tempo)
+      this.isVisibleStopButton = false
     },
 
-    animateCards() {
+    practice() {
       const lengthCardValue = this.card.current.value.length - 1
+
+      // starting audio sequence
       this.sendSequence()
       this.sequence.start()
-      this.isVisibleButtonStop = true
 
+      // eneabling stop button
+      this.isVisibleStopButton = true
+
+      // starting preCount
       if (this.i.preCount > 0) {
         this.score = `Iniciando em <br /><b>${this.i.preCount}!</b>`
 
         this.i.preCount = this.i.preCount - 1
+
+        // starting practice execution
       } else if (this.iCard <= this.lengthSuffledDeck) {
         this.score = `<b>Executando<br /></b>...`
 
         if (this.swapCard) {
+          // animate cards
           this.iCard = Animate.startAnimateCards(
             this.iCard,
             this.card,
@@ -311,6 +329,8 @@ export default {
 
           this.i.cardValue = 0
         }
+
+        // animate values of cards
 
         this.i.cardValue = Animate.startAnimateValues(
           this.i.cardValue,
@@ -322,6 +342,7 @@ export default {
           this.finish
         )
 
+        // testing when to switch cards
         if (this.i.cardValue > lengthCardValue) {
           this.swapCard = true
         } else {
@@ -343,7 +364,7 @@ export default {
       if (this.sequence != null) {
         clearInterval(this.timer)
         this.sequence.stop()
-        this.isVisibleButtonStop = false
+        this.isVisibleStopButton = false
         this.score = 'Aguardando<br />...'
         this.card.prev = {}
         this.card.current = {}

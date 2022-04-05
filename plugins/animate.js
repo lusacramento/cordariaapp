@@ -1,3 +1,6 @@
+// animate.js
+// this module contains the functions and methods used to run the application.
+
 export default {
   startAnimateCards(iCard, card, suffledDeck, lengthSuffledDeck) {
     iCard++
