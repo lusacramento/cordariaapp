@@ -18,10 +18,14 @@
         v-model="instrument"
         class="controls justify-self-center"
       >
-        <option value="acoustic-guitar">Violão</option>
-        <option value="cavaco">Cavaquinho</option>
-        <option value="eletric-guitar">Guitarra</option>
-        <option value="bass">Baixo</option>
+        <option :value="set.guitars.acoustic.name">
+          {{ set.guitars.acoustic.label }}
+        </option>
+        <option :value="set.cavaco.name">{{ set.cavaco.label }}</option>
+        <option :value="set.guitars.electric.name">
+          {{ set.guitars.electric.label }}
+        </option>
+        <option :value="set.bass.name">{{ set.bass.label }}</option>
       </select>
     </div>
 
@@ -55,13 +59,13 @@
         class="controls disabled"
         :disabled="isReadtoLoad"
       >
-        <option value="0">Nenhum (Corda Solta)</option>
-        <option value="1" class="selected">Dedo 1</option>
-        <option value="2">Dedo 2</option>
-        <option value="3">Dedo 3</option>
-        <option value="4">Dedo 4</option>
-        <!-- <option value="all">Todos</option> avaliable for future versions-->
-        <!-- <option value="P">PMIA</option> avaliable for future versions-->
+        <option
+          v-for="fF in set.firstFingers"
+          :key="fF.firstFinger"
+          :value="fF.firstFinger"
+        >
+          {{ fF.firstFinger }}
+        </option>
       </select>
     </div>
 
@@ -79,26 +83,31 @@
             instrument === 'acoustic-guitar' || instrument === 'eletric-guitar'
           "
         >
-          <option value="1">Corda 1 (Mi4)</option>
-          <option value="2">Corda 2 (Si3)</option>
-          <option value="3">Corda 3 (Sol3)</option>
-          <option value="4">Corda 4 (Ré3)</option>
-          <option value="5">Corda 5 (Lá2)</option>
-          <option value="6">Corda 6 (Mi2)</option>
-          <option value="allUp">Todas (ascendente)</option>
-          <option value="allDown">Todas (descendente)</option>
+          <option
+            v-for="st in set.guitars.strings"
+            :key="st.string"
+            :value="st.string"
+          >
+            {{ st.label }}
+          </option>
         </template>
         <template v-else-if="instrument === 'cavaco'">
-          <option value="1">Corda 1 (Ré5)</option>
-          <option value="2">Corda 2 (Si4)</option>
-          <option value="3">Corda 3 (Sol4)</option>
-          <option value="4">Corda 4 (Ré4)</option>
+          <option
+            v-for="st in set.cavaco.strings"
+            :key="st.string"
+            :value="st.string"
+          >
+            {{ st.label }}
+          </option>
         </template>
         <template v-else-if="instrument === 'bass'">
-          <option value="1">Corda 1 (Sol2)</option>
-          <option value="2">Corda 2 (Ré2)</option>
-          <option value="3">Corda 3 (Lá1)</option>
-          <option value="4">Corda 4 (Mi1)</option>
+          <option
+            v-for="st in set.bass.strings"
+            :key="st.string"
+            :value="st.string"
+          >
+            {{ st.label }}
+          </option>
         </template>
       </select>
     </div>
@@ -157,11 +166,12 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-// import Score from '@/components/cordaria/Score'
 
 library.add([faPlay])
 
 export default {
+  name: 'ExerciseNav',
+
   components: { FontAwesomeIcon },
 
   props: {
@@ -171,6 +181,12 @@ export default {
       type: Array,
       default() {
         return []
+      },
+    },
+    set: {
+      type: Object,
+      default() {
+        return {}
       },
     },
     stop: {
@@ -194,6 +210,13 @@ export default {
       loadActiveThePratice: true,
       isReadtoLoad: true,
       isEnabledMenu: false,
+
+      data: {
+        guitars: {
+          acoustic: { name: 'acoutic guitar' },
+          eletric: { name: 'eletric guitar' },
+        },
+      },
     }
   },
 

@@ -17,6 +17,7 @@
             >
               <ExerciseNav
                 :lessons="lessons"
+                :set="setNav"
                 :is-visible-button-play="isVisibleButtonPlay"
                 :is-visible-button-stop="isVisibleStopButton"
                 :stop="stop"
@@ -82,7 +83,6 @@ import CatJump from '@/components/cordaria/Tips'
 import ExerciseNav from '@/components/cordaria/ExerciseNav'
 import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
 import ScoreTerminal from '@/components/cordaria/Score'
-// import Score from '@/components/cordaria/Score'
 
 library.add([faStop])
 
@@ -102,12 +102,15 @@ export default {
     const eletricGuitar = await $http.$get('./json/eletric-guitar.json')
     const cavaco = await $http.$get('./json/cavaco.json')
     const bass = await $http.$get('./json/bass.json')
+    const settingsNav = await $http.$get('./json/instrument-settings.json')
 
     const tips = await $http.$get('./json/tips.json')
 
     return {
       // predefined lessons
       lessons: lessons.lessons,
+
+      setNav: settingsNav.settings,
 
       // full deck
       deck: deck.deck,
