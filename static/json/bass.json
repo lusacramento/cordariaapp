@@ -2,6 +2,7 @@
     "bassMap": [
         [
             {
+                "name": "bass",
                 "baseUrl": "/audios/bass/",
                 "note": "C1",
                 "enharmony": "null",
@@ -12,7 +13,7 @@
                 "enharmony": "null",
                 "tablature": "metronome-low-bip"
             }
-        ],       
+        ],
         [
             {
                 "note": "G2",

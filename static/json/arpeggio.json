@@ -1,0 +1,65 @@
+{
+    "arpeggioMap": [
+        [
+            {
+                "baseUrl": "/audios/eletric-guitar/",
+                "note": "C1",
+                "enharmony": "null",
+                "tablature": "metronome-high-bip"
+            },
+            {
+                "note": "C0",
+                "enharmony": "null",
+                "tablature": "metronome-low-bip"
+            }
+        ],
+        [
+            {
+                "note": "E4",
+                "enharmony": "null",
+                "tablature": "10",
+                "10": "E4"
+            }
+        ],
+        [
+            {
+                "note": "B3",
+                "enharmony": "null",
+                "tablature": "20",
+                "20": "B3"
+            }
+        ],
+        [
+            {
+                "note": "G3",
+                "enharmony": "null",
+                "tablature": "30",
+                "30": "G3"
+            }
+        ],
+        [
+            {
+                "note": "D3",
+                "enharmony": "null",
+                "tablature": "40",
+                "40": "D3"
+            }
+        ],
+        [
+            {
+                "note": "A2",
+                "enharmony": "null",
+                "tablature": "50",
+                "50": "A2"
+            }
+        ],
+        [
+            {
+                "note": "E2",
+                "enharmony": "null",
+                "tablature": "60",
+                "60": "E2"
+            }
+        ]
+    ]
+}

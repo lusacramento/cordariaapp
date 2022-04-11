@@ -2,6 +2,7 @@
     "cavacoMap": [
         [
             {
+                "name": "cavaco",
                 "baseUrl": "/audios/cavaco/",
                 "note": "C1",
                 "enharmony": "null",
@@ -140,6 +141,6 @@
                 "tablature": "44",
                 "44": "F#4"
             }
-        ]     
+        ]
     ]
 }

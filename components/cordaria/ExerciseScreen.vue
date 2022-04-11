@@ -12,7 +12,7 @@
         <div class="row align-items-center">
           <Card
             v-for="(cardDeck, i) in suffledDeck"
-            :id="cardDeck.id"
+            :id="cardDeck.id.toString()"
             :key="cardDeck + ' ' + i"
             :card="cardDeck"
             class="card cardView"

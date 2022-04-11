@@ -2,6 +2,7 @@
     "guitarMap": [
         [
             {
+                "name": "guitar",
                 "baseUrl": "/audios/eletric-guitar/",
                 "note": "C1",
                 "enharmony": "null",

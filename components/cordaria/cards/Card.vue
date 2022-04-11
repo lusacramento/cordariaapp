@@ -10,11 +10,11 @@
     }"
   >
     <CardFragment
-      v-for="(fragment, i) in card.fragments"
-      :id="id + ' ' + fragment.position"
-      :key="fragment + ' ' + i"
-      :is-highlight="fragment.isHighlight"
-      :fragment="fragment.fragment"
+      v-for="(frag, i) in card.fragments"
+      :id="id + ' ' + frag.position"
+      :key="frag + ' ' + i"
+      :is-highlight="frag.isHighlight"
+      :fragment="frag.fragment"
     />
   </div>
 </template>

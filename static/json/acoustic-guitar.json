@@ -2,6 +2,7 @@
     "guitarMap": [
         [
             {
+                "name": "guitar",
                 "baseUrl": "/audios/acoustic-guitar/",
                 "note": "C1",
                 "enharmony": "null",
