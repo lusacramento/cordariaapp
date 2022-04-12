@@ -6,7 +6,8 @@
                 "baseUrl": "/audios/cavaco/",
                 "note": "C1",
                 "enharmony": "null",
-                "tablature": "metronome-high-bip"
+                "tablature": "metronome-high-bip",
+                "stringsNumber": 4
             },
             {
                 "note": "C0",

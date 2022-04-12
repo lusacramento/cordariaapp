@@ -35,12 +35,12 @@
                     "label": "Corda 6 (E2)"
                 },
                 {
-                    "string": "allUp",
-                    "label": "Todas (ascendente)"
+                    "string": "fromBassToTreble",
+                    "label": "Todas (ínicio corda 6)"
                 },
                 {
-                    "string": "allDown",
-                    "label": "Todas (descendente)"
+                    "string": "fromTrebleToBass",
+                    "label": "Todas (início corda 1"
                 }
             ]
         },
@@ -65,12 +65,12 @@
                     "label": "Corda 4 (Ré4)"
                 },
                 {
-                    "string": "allUp",
-                    "label": "Todas (ascendente)"
+                    "string": "fromBassToTreble",
+                    "label": "Todas (início corda 4)"
                 },
                 {
-                    "string": "allDown",
-                    "label": "Todas (descendente)"
+                    "string": "fromTrebleToBass",
+                    "label": "Todas (início corda 1)"
                 }
             ]
         },
@@ -95,12 +95,12 @@
                     "label": "Corda 4 (Mi1)"
                 },
                 {
-                    "string": "allUp",
-                    "label": "Todas (ascendente)"
+                    "string": "fromBassToTreble",
+                    "label": "Todas (início corda 4)"
                 },
                 {
-                    "string": "allDown",
-                    "label": "Todas (descendente)"
+                    "string": "fromTrebleToBass",
+                    "label": "Todas (início corda 1)"
                 }
             ]
         },

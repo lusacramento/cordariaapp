@@ -101,59 +101,67 @@ export default {
   },
 
   // setting case if all strings is selected.
-  allStringsConfig(settings) {
+  configAllStrings(settings, stringsNumber) {
     switch (settings.stringNumber) {
-      case 'allUp':
-        settings.stringNumber = 6
-        settings.allStrings = true
+      case 'fromBassToTreble':
+        settings.stringNumber = stringsNumber
+        settings.direction = 'down'
         break
-      case 'allDown':
+      case 'fromTrebleToBass':
         settings.stringNumber = 1
-        settings.allStrings = true
+        settings.direction = 'up'
         break
+      default:
     }
     return settings
   },
   // changing string
-  changingString(settings) {
-    switch (settings.stringNumber) {
-      case 1:
-        settings.direction = 'up'
-        break
-      case 6:
-        settings.direction = 'down'
-        break
-      default:
-        break
+  changingString(settings, stringsNumber) {
+    if (settings.direction === 'down') {
+      settings.stringNumber--
+    } else {
+      settings.stringNumber++
     }
 
-    switch (settings.direction) {
-      case 'down':
-        settings.stringNumber--
-        break
-      case 'up':
-        settings.stringNumber++
-        break
-      default:
-        break
+    if (
+      (settings.stringNumber === 1 && stringsNumber === 4) ||
+      (settings.stringNumber === 1 && stringsNumber === 6)
+    ) {
+      settings.direction = 'up'
     }
+    if (
+      (settings.stringNumber === 4 && stringsNumber === 4) ||
+      (settings.stringNumber === 6 && stringsNumber === 6)
+    ) {
+      settings.direction = 'down'
+    }
+
     return settings
   },
 
   // generatting sequence
   generateSequence(settings, deck, instrumentMap, sampler) {
+    const stringsNumber = instrumentMap[0][0].stringsNumber
+
     // config if all strings enable
-    settings = this.allStringsConfig(settings)
+    if (
+      settings.stringNumber === 'fromBassToTreble' ||
+      settings.stringNumber === 'fromTrebleToBass'
+    ) {
+      settings.allStrings = true
+      settings = this.configAllStrings(settings, stringsNumber)
+    }
 
     const notes = ['C1', 'C0', 'C0', 'C0', 'C0']
     deck.forEach((card) => {
       if (settings.allStrings) {
         card.fragments.forEach((fragments) => {
           const fragment = fragments.fragment
-          notes.push(this.getNotes(fragment, instrumentMap, settings))
+          const note = this.getNotes(fragment, instrumentMap, settings)
+          notes.push(note)
         })
         // changing string
-        settings = this.changingString(settings)
+        settings = this.changingString(settings, stringsNumber)
       } else {
         card.fragments.forEach((fragments) => {
           const fragment = fragments.fragment
@@ -180,6 +188,7 @@ export default {
     let note = null
     const strings = instrumentMap[settings.stringNumber]
     const tablature = settings.stringNumber + fret
+
     note = strings[fret][tablature]
     return note
   },

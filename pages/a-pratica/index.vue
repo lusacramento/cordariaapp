@@ -132,11 +132,11 @@ export default {
 
       // exercises settings
       settings: {
-        isMobile: null,
-        lesson: null,
-        firstFinger: null,
-        stringNumber: '5',
-        bpm: null,
+        isMobile: true,
+        lesson: 1,
+        firstFinger: 0,
+        stringNumber: '1',
+        bpm: 40,
         allStrings: false,
         direction: 'down',
         release: 1,
