@@ -79,13 +79,13 @@ export default {
     [
       '@nuxtjs/robots',
       {
-        sitemap: 'https://beta.cordaria.com.br/sitemap.xml',
+        sitemap: 'https://lusacramento.github.io/Cordaria/sitemap.xml',
       },
     ],
     [
       '@nuxtjs/sitemap',
       {
-        hostname: 'https://beta.cordaria.com.br',
+        hostname: 'https://lusacramento.github.io/Cordaria',
         gzip: true,
       },
     ],
