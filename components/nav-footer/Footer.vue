@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer container-fluid d-flex">
+    <footer class="footer container-fluid d-flex justify-content-center">
       <div class="row align-items-center d-flex justify-content-center">
         <div class="col-sm-3 credits">
           <div id="credits" class="">

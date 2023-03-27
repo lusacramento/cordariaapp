@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="app container-fluid">
-    <div id="nav">
+    <div id="nav" class="d-flex justify-content-center">
       <Nav :base-url="baseUrl" />
     </div>
     <main id="main" class="router-view">
@@ -13,58 +13,58 @@
 </template>
 
 <script>
-import Nav from '@/components/nav-footer/Nav'
-import Footer from '@/components/nav-footer/Footer'
+import Nav from "@/components/nav-footer/Nav";
+import Footer from "@/components/nav-footer/Footer";
 
 export default {
-  name: 'DefaultLayout',
+  name: "DefaultLayout",
   components: { Footer, Nav },
   data() {
     return {
-      baseUrl: 'https://beta.cordaria.com.br/',
+      baseUrl: "https://beta.cordaria.com.br/",
       isIndex: false,
-      indexed: { hid: 'null', name: 'robots', content: 'all' },
-      noIndexed: { hid: 'null', name: 'robots', content: 'noindex' },
+      indexed: { hid: "null", name: "robots", content: "all" },
+      noIndexed: { hid: "null", name: "robots", content: "noindex" },
       metaIndexed: {},
-    }
+    };
   },
 
   head() {
     if (!this.isIndex) {
-      this.metaIndexed = this.noIndexed
+      this.metaIndexed = this.noIndexed;
     } else {
-      this.metaIndexed = this.indexed
+      this.metaIndexed = this.indexed;
     }
 
     return {
       meta: [
-        { charset: 'utf-8' },
-        { httpEquiv: 'content-language', content: 'pt-br' },
-        { httpEquiv: 'content-type', content: 'text/html' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'format-detection', content: 'telephone=no' },
-        { name: 'author', content: 'Lu Sacramento' },
+        { charset: "utf-8" },
+        { httpEquiv: "content-language", content: "pt-br" },
+        { httpEquiv: "content-type", content: "text/html" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "format-detection", content: "telephone=no" },
+        { name: "author", content: "Lu Sacramento" },
         {
-          name: 'copyright',
+          name: "copyright",
           content:
-            'Copyright © 2021. Cordaria. Todos Diretos Reservados. Feito por Lu Sacramento',
+            "Copyright © 2021. Cordaria. Todos Diretos Reservados. Feito por Lu Sacramento",
         },
-        { name: 'generator', content: 'Nuxt v.2.15.7' },
-        { name: 'rating', content: 'general' },
+        { name: "generator", content: "Nuxt v.2.15.7" },
+        { name: "rating", content: "general" },
       ],
       link: [
         {
-          rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css",
           integrity:
-            'sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC',
-          crossorigin: 'anonymous',
+            "sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC",
+          crossorigin: "anonymous",
         },
         this.metaIndexed,
       ],
-    }
+    };
   },
-}
+};
 </script>
 <style>
 /* variables */
@@ -141,14 +141,14 @@ export default {
 }
 
 .title {
-  font-family: 'Encode Sans';
+  font-family: "Encode Sans";
   font-weight: var(--font-black);
   font-size: var(--font-size-h1);
   color: var(--font-color-h1) !important;
 }
 
 p {
-  font-family: 'Encode Sans';
+  font-family: "Encode Sans";
   font-weight: var(--font-regular);
   font-size: var(--font-size-p);
   color: var(--font-color-p) !important;
@@ -159,7 +159,7 @@ p {
 }
 
 a {
-  font-family: 'Encode Sans';
+  font-family: "Encode Sans";
   font-weight: var(--font-semi-bold);
   color: var(--font-color-link) !important;
 }
@@ -168,32 +168,32 @@ a:hover {
 }
 
 strong {
-  font-family: 'Encode sans';
+  font-family: "Encode sans";
   font-weight: var(--font-semi-bold);
   color: rgb(255, 255, 255, 0.7) !important;
 }
 
 b {
-  font-family: 'Encode sans';
+  font-family: "Encode sans";
   font-weight: var(--font-bold);
   color: rgb(255, 255, 255, 0.7) !important;
 }
 
 h2 {
-  font-family: 'Encode Sans';
+  font-family: "Encode Sans";
   font-weight: var(--font-semi-bold);
   font-size: var(--font-size-h2) !important;
   color: var(--font-color-h2);
 }
 
 h3 {
-  font-family: 'Encode Sans';
+  font-family: "Encode Sans";
   font-weight: var(--font-semi-bold);
   font-size: var(--font-size-h3) !important;
 }
 
 h4 {
-  font-family: 'Encode Sans';
+  font-family: "Encode Sans";
   font-weight: var(--font-semi-bold);
   font-size: var(--font-size-h4) !important;
 }
@@ -221,9 +221,9 @@ div.app {
   /* grid-template-rows: 17vh 70vh 11vh; */
 
   grid-template-areas:
-    'nav'
-    'main'
-    'foot';
+    "nav"
+    "main"
+    "foot";
 }
 
 #nav {
