@@ -1,11 +1,12 @@
 <template>
-  <div id="tip" class="tip"></div>
+  <div id="tip-box" class="tip"></div>
 </template>
 
 <script>
 import Swal from "sweetalert2";
 
 export default {
+  name: "TipsBox",
   props: {
     tips: {
       type: Array,
