@@ -85,7 +85,7 @@ export default {
     [
       '@nuxtjs/sitemap',
       {
-        hostname: 'https://lusacramento.github.io/Cordaria.app',
+        hostname: 'https://lusacramento.github.io/Cordaria/',
         gzip: true,
       },
     ],
