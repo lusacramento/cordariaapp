@@ -63,7 +63,7 @@ export default {
     for (const iString in instrumentMap) {
       const fret = instrumentMap[iString]
       fret.forEach((element) => {
-        urls[element.note] = `${element.tablature}.mp3`
+        urls[element.note] = `/Cordaria/${element.tablature}.mp3`
       })
     }
 
