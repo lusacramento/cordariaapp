@@ -3,7 +3,7 @@
         [
             {
                 "name": "guitar",
-                "baseUrl": "/audios/acoustic-guitar/",
+                "baseUrl": "/Cordaria/audios/acoustic-guitar/",
                 "note": "C1",
                 "enharmony": "null",
                 "tablature": "metronome-high-bip",
