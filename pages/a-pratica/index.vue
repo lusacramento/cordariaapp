@@ -97,7 +97,11 @@ export default {
   },
   async asyncData({ $http }) {
     const tips = await $http.$get('./Cordaria/json/tips.json')
+<<<<<<< HEAD
     const lessons = await $http.$get('./Cordaria/json/lessons.json')
+=======
+    const lessons = await $http.$get('./Cordaria/lessons.json')
+>>>>>>> origin/master
     const deck = await $http.$get('./Cordaria/json/deck.json')
     const acousticGuitar = await $http.$get(
       './Cordaria/json/acoustic-guitar.json'
