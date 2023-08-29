@@ -12,7 +12,9 @@
             text-variant=""
             :visible="isEnabledMenu"
           >
-            <div class="exercises-nav-layer d-flex flex-column align-items-center">
+            <div
+              class="exercises-nav-layer d-flex flex-column align-items-center"
+            >
               <ExerciseNav
                 :lessons="lessons"
                 :set="setNav"
@@ -36,7 +38,12 @@
           <button
             v-if="isVisibleStopButton"
             type="button"
-            class="btn btn-danger btn-controls d-flex align-items-center justify-content-center"
+            class="
+              btn btn-danger btn-controls
+              d-flex
+              align-items-center
+              justify-content-center
+            "
             @click="stop(true)"
           >
             <font-awesome-icon class="fa fa-code stop" :icon="iconStop" />
@@ -63,24 +70,24 @@
 
 <script>
 // stop button
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faStop } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStop } from '@fortawesome/free-solid-svg-icons'
 
 // modules and functions
-import Func from "@/plugins/functions";
-import Animate from "@/plugins/animate";
+import Func from '@/plugins/functions'
+import Animate from '@/plugins/animate'
 
 // components
-import CatJump from "@/components/cordaria/Tips";
-import ExerciseNav from "@/components/cordaria/ExerciseNav";
-import ExerciseScreen from "@/components/cordaria/ExerciseScreen";
-import ScoreTerminal from "@/components/cordaria/Score";
+import CatJump from '@/components/cordaria/Tips'
+import ExerciseNav from '@/components/cordaria/ExerciseNav'
+import ExerciseScreen from '@/components/cordaria/ExerciseScreen'
+import ScoreTerminal from '@/components/cordaria/Score'
 
-library.add([faStop]);
+library.add([faStop])
 
 export default {
-  name: "APratica",
+  name: 'APratica',
   components: {
     FontAwesomeIcon,
     CatJump,
@@ -89,14 +96,20 @@ export default {
     ScoreTerminal,
   },
   async asyncData({ $http }) {
-    const tips = await $http.$get("./json/tips.json");
-    const lessons = await $http.$get("./json/lessons.json");
-    const deck = await $http.$get("./json/deck.json");
-    const acousticGuitar = await $http.$get("./json/acoustic-guitar.json");
-    const eletricGuitar = await $http.$get("./json/eletric-guitar.json");
-    const cavaco = await $http.$get("./json/cavaco.json");
-    const bass = await $http.$get("./json/bass.json");
-    const settingsNav = await $http.$get("./json/instrument-settings.json");
+    const tips = await $http.$get('./Cordaria/json/tips.json')
+    const lessons = await $http.$get('./Cordaria/json/lessons.json')
+    const deck = await $http.$get('./Cordaria/json/deck.json')
+    const acousticGuitar = await $http.$get(
+      './Cordaria/json/acoustic-guitar.json'
+    )
+    const eletricGuitar = await $http.$get(
+      './Cordaria/json/eletric-guitar.json'
+    )
+    const cavaco = await $http.$get('./Cordaria/json/cavaco.json')
+    const bass = await $http.$get('./Cordaria/json/bass.json')
+    const settingsNav = await $http.$get(
+      './Cordaria/json/instrument-settings.json'
+    )
 
     return {
       // predefined lessons
@@ -127,10 +140,10 @@ export default {
         isMobile: true,
         lesson: 1,
         firstFinger: 0,
-        stringNumber: "1",
+        stringNumber: '1',
         bpm: 40,
         allStrings: false,
-        direction: "down",
+        direction: 'down',
         release: 1,
       },
       instrument: null,
@@ -159,153 +172,159 @@ export default {
       // Show Buttons
       isVisibleButtonPlay: false,
       isVisibleStopButton: false,
-      iconStop: "stop",
+      iconStop: 'stop',
 
       // Playing
       tempo: null,
 
       // score painel
-      score: "Aguardando<br />para iniciar",
+      score: 'Aguardando<br />para iniciar',
 
       fadeOutValue: 10,
 
       // Menu
       isEnabledMenu: true,
-    };
+    }
   },
   data() {
     return {
-      title: "A PRÁTICA",
-    };
+      title: 'A PRÁTICA',
+    }
   },
   head() {
     return {
-      title: "Cordaria - Pratique agora!",
+      title: 'Cordaria - Pratique agora!',
       meta: [
         {
-          hid: "titlepratica",
-          name: "title",
-          content: "Já Praticou Hoje? Inicie agora mesmo seu treinamento!",
+          hid: 'titlepratica',
+          name: 'title',
+          content: 'Já Praticou Hoje? Inicie agora mesmo seu treinamento!',
         },
         {
-          hid: "pratica",
-          name: "description",
-          content: "Inicie agora mesmo seu treinamento musical. Bons Estudos!",
+          hid: 'pratica',
+          name: 'description',
+          content: 'Inicie agora mesmo seu treinamento musical. Bons Estudos!',
         },
         {
-          hid: "particakeys",
-          name: "keywords",
-          content: "Treinamento, Método, Violão, Guitarra, Dedilhado",
+          hid: 'particakeys',
+          name: 'keywords',
+          content: 'Treinamento, Método, Violão, Guitarra, Dedilhado',
         },
       ],
       link: [
         {
-          rel: "canonical",
-          href: "https://cordaria.com.br/a-pratica",
+          rel: 'canonical',
+          href: 'https://cordaria.com.br/a-pratica',
         },
       ],
-    };
+    }
   },
 
   watch: {
     i(newI) {
-      return newI;
+      return newI
     },
 
     score(newScore) {
-      return newScore;
+      return newScore
     },
 
     suffledDeck(newSuffledDeck) {
-      return newSuffledDeck;
+      return newSuffledDeck
     },
 
     card(newCard) {
-      return newCard;
+      return newCard
     },
 
     tempo(newTempo) {
-      return newTempo;
+      return newTempo
     },
   },
 
   created() {
-    this.sendPropsHideFooter();
+    this.sendPropsHideFooter()
   },
 
   mounted() {
-    this.isVisibleButtonPlay = true;
+    this.isVisibleButtonPlay = true
   },
   destroyed() {
-    this.stop(true);
+    this.stop(true)
   },
   methods: {
     load(payload) {
       // hide Menu
-      this.isEnabledMenu = payload.isEnabledMenu;
+      this.isEnabledMenu = payload.isEnabledMenu
 
-      this.isVisibleButtonPlay = false;
-      this.score = "Carregando<br>...";
+      this.isVisibleButtonPlay = false
+      this.score = 'Carregando<br>...'
 
       // getting selected instrument
-      this.instrument = payload.instrument;
-      this.instrumentMap = Func.selectInstrument(this.instrument, this.instruments);
+      this.instrument = payload.instrument
+      this.instrumentMap = Func.selectInstrument(
+        this.instrument,
+        this.instruments
+      )
 
       // getting audios
-      this.sampler = Func.getAudios(this.instrumentMap);
+      this.sampler = Func.getAudios(this.instrumentMap)
 
       // getting form data
-      this.settings = Func.getData(payload, this.settings, this.lessons);
+      this.settings = Func.getData(payload, this.settings, this.lessons)
 
-      this.startTraining();
+      this.startTraining()
     },
 
     // Main Method
     startTraining() {
       // suffling Deck
-      this.suffledDeck = Func.generateExercise(this.deck, this.settings.firstFinger);
+      this.suffledDeck = Func.generateExercise(
+        this.deck,
+        this.settings.firstFinger
+      )
 
       // generating audios sequence
-      this.tempo = Func.convertBpmToMs(this.settings.bpm);
-      this.settings.release = Func.calculateRelease(this.tempo);
+      this.tempo = Func.convertBpmToMs(this.settings.bpm)
+      this.settings.release = Func.calculateRelease(this.tempo)
       this.sequence = Func.generateSequence(
         this.settings,
         this.suffledDeck,
         this.instrumentMap,
         this.sampler
-      );
+      )
 
       // preparing lesson screen
-      this.card.current = this.suffledDeck[0];
-      this.card.next = this.suffledDeck[1];
+      this.card.current = this.suffledDeck[0]
+      this.card.next = this.suffledDeck[1]
 
-      this.lengthSuffledDeck = this.suffledDeck.length;
-      this.i.preCount = this.card.current.fragments.length;
+      this.lengthSuffledDeck = this.suffledDeck.length
+      this.i.preCount = this.card.current.fragments.length
 
       // starting practice
-      this.timer = setInterval(this.practice, this.tempo);
-      this.isVisibleStopButton = false;
+      this.timer = setInterval(this.practice, this.tempo)
+      this.isVisibleStopButton = false
     },
 
     practice() {
-      const lengthCardValue = this.card.current.value.length - 1;
+      const lengthCardValue = this.card.current.value.length - 1
 
       // starting audio sequence
-      this.sendSequence();
-      this.sequence.start();
+      this.sendSequence()
+      this.sequence.start()
 
       // eneabling stop button
-      this.isVisibleStopButton = true;
+      this.isVisibleStopButton = true
 
       // starting preCount
       if (this.i.preCount > 0) {
-        this.score = `Iniciando em <br /><b>${this.i.preCount}!</b>`;
+        this.score = `Iniciando em <br /><b>${this.i.preCount}!</b>`
 
-        this.i.preCount = this.i.preCount - 1;
+        this.i.preCount = this.i.preCount - 1
 
         // starting practice execution
       } else if (this.iCard <= this.lengthSuffledDeck) {
-        this.score = `<b>Executando<br /></b>...`;
+        this.score = `<b>Executando<br /></b>...`
 
         if (this.swapCard) {
           // animate cards
@@ -314,9 +333,9 @@ export default {
             this.card,
             this.suffledDeck,
             this.lengthSuffledDeck
-          );
+          )
 
-          this.i.cardValue = 0;
+          this.i.cardValue = 0
         }
 
         // animate values of cards
@@ -329,49 +348,49 @@ export default {
           this.suffledDeck,
           this.score,
           this.finish
-        );
+        )
 
         // testing when to switch cards
         if (this.i.cardValue > lengthCardValue) {
-          this.swapCard = true;
+          this.swapCard = true
         } else {
-          this.swapCard = false;
+          this.swapCard = false
         }
       }
     },
 
     sendSequence() {
-      this.$emit("sequence", this.sequence);
+      this.$emit('sequence', this.sequence)
     },
 
     finish() {
-      clearInterval(this.timer);
-      this.score = "Parabéns!<br />Treinamento concluído.";
+      clearInterval(this.timer)
+      this.score = 'Parabéns!<br />Treinamento concluído.'
     },
 
     stop(isResetRouter) {
       if (this.sequence != null) {
-        clearInterval(this.timer);
-        this.sequence.stop();
-        this.isVisibleStopButton = false;
-        this.score = "Aguardando<br />...";
-        this.card.prev = {};
-        this.card.current = {};
-        this.card.next = {};
-        this.suffledDeck.length = 0;
-        this.isVisibleButtonPlay = true;
+        clearInterval(this.timer)
+        this.sequence.stop()
+        this.isVisibleStopButton = false
+        this.score = 'Aguardando<br />...'
+        this.card.prev = {}
+        this.card.current = {}
+        this.card.next = {}
+        this.suffledDeck.length = 0
+        this.isVisibleButtonPlay = true
       }
       if (isResetRouter) {
-        this.$router.go();
+        this.$router.go()
       }
     },
     sendPropsHideFooter() {
-      this.$emit("props", {
+      this.$emit('props', {
         hideFooter: true,
-      });
+      })
     },
   },
-};
+}
 </script>
 
 <style>
@@ -386,7 +405,7 @@ b-button {
 
 #sidebar-menu {
   background-color: rgba(0, 0, 0, 0.7) !important;
-  font-family: "Encode Sans";
+  font-family: 'Encode Sans';
   font-weight: var(--font-semi-bold);
 }
 
