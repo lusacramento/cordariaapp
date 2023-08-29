@@ -1,8 +1,9 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
+  ssr: false,
   target: 'static',
   router: {
-    base: '/Cordaria/',
+    // base: '/Cordaria/',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
