@@ -13,7 +13,9 @@
   <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-compilando">Compilando</a> &#xa0; | &#xa0;
-  <a href="#memo-license">Licença</a> &#xa0; | &#xa0;
+   &#xa0; | &#xa0;
+  <a href="#keyboard-contribuindo">Contribuindo</a> &#xa0; | &#xa0;
+  <a href="#memo-licença">Licença</a> &#xa0; | &#xa0;
   <a href="https://github.com/lusacramento" target="_blank">Autor</a>
 </p>
 
@@ -95,7 +97,7 @@ Acesse -> [**https://lusacramento.github.io/cordariaapp**](https://lusacramento.
 ## :white_check_mark: Compilando ##
 
 
-Antes de inciar &#xa0 :checkered_flag:, você precisa ter [Git](https://git-scm.com) e [Node](https://nodejs.org/en/) instalados (Documentação em inglês).
+Antes de inciar :checkered_flag:, você precisa ter [Git](https://git-scm.com) e [Node](https://nodejs.org/en/) instalados (Documentação em inglês).
 
 
 
@@ -112,17 +114,21 @@ $ yarn
 # Rode o projeto
 $ yarn run dev
 
-# The server will initialize in the <http://localhost:3000>
+# O servidor iniciará em <http://localhost:3000>
 ```
 <br>
 
-## :memo: License ##
+## :keyboard: Contribuindo ##
+Estamos em processo de atualização de versão framework Nuxt, de v2 para v3 em um repositório a parte. Caso haja interesse, em contribuir, mande uma mensagem inbox! 
+
+
+
+## :memo: Licença ##
 
 Este projeto esta sobre licença do MIT. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
 Construído com :heart: by <a href="https://github.com/lusacramento" target="_blank">lusacramento</a>
 
-&#xa0;
 
 <a href="#top">Voltar ao início</a>
