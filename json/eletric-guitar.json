@@ -3,7 +3,7 @@
         [
             {
                 "name": "guitar",
-                "baseUrl": "/audios/eletric-guitar/",
+                "baseUrl": "/cordariaapp/audios/eletric-guitar/",
                 "note": "C1",
                 "enharmony": "null",
                 "tablature": "metronome-high-bip",

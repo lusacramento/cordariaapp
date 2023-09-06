@@ -3,7 +3,7 @@
         [
             {
                 "name": "cavaco",
-                "baseUrl": "/Cordaria/audios/cavaco/",
+                "baseUrl": "/cordariaapp/audios/cavaco/",
                 "note": "C1",
                 "enharmony": "null",
                 "tablature": "metronome-high-bip",

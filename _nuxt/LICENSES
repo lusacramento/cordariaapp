@@ -1,17 +1,4 @@
 /*!
- * Vue.js v2.7.14
- * (c) 2014-2022 Evan You
- * Released under the MIT License.
- */
-
-
-/*!
- * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */
-
-
-/*!
  * Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  * Copyright 2022 Fonticons, Inc.
@@ -65,6 +52,19 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ */
+
+
+/*!
+ * Vue.js v2.7.14
+ * (c) 2014-2022 Evan You
+ * Released under the MIT License.
+ */
+
+
+/*!
+ * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
 
