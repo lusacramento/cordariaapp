@@ -1,19 +1,20 @@
 <div align="center" id="top"> 
-  <img src="https://cordaria.com.br/_nuxt/img/logo-cordaria_escura_new.png" href="https://cordaria.com.br" height= "270" alt="Cordaria" />
+  <img src="./assets/imgs/logo-cordaria_escura_new.png" height= "270" alt="logo-cordaria" />
 
   &#xa0;
 
 </div>
 
-<h1 align="center"><a href="https://cordaria.com.br">Já praticou Hoje?</a></h1>
+<h1 align="center"><a href="https://lusacramento.github.io/cordariaapp">Já praticou Hoje?</a></h1>
 
 <p align="center">
   <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
   <a href="#sparkles-recursos">Recursos</a> &#xa0; | &#xa0;
   <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-compilando">Compilando</a> &#xa0; | &#xa0;
-  <a href="#memo-license">Licença</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-compilando">Compilando</a> &#xa0; | &#xa0; 
+  <a href="#keyboard-contribuindo">Contribuindo</a> &#xa0; | &#xa0;
+  <a href="#memo-licença">Licença</a> &#xa0; | &#xa0;
   <a href="https://github.com/lusacramento" target="_blank">Autor</a>
 </p>
 
@@ -38,8 +39,6 @@ A pesquisa “Cordaria – Desenvolvimento de aplicação web para iniciação �
 Utilizando meus conhecimentos de uma década como professor e alguns anos de desenvolvedor web, implementei uma aplicação para prática de exercícios básicos de violão e guitarra baseada em alguns métodos já experienciados por mim enquanto discente e docente. Com isso, Cordaria pretende ampliar as possibilidades metodológicas do ensino prático destes instrumentos num cenário EAD e oferecer uma oportunidade diferente para iniciação da arte do fazer musical, além de incentivar programadores e professores a pensar novas formas de aprendizagem.
 
 Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à Cultura – Lei Aldir Blanc, Governo Federal, Ministério do Turismo e Secretaria Especial de Cultura, através da aprovação no Edital LAB no 14/2020 – “Seleção de Bolsistas para as Áreas Artísticas Técnicas e de Produção Cultural” promovido pela Secretaria de Cultura e Turismo de Minas Gerais – SECULT. 
-
-![Patrocínio](https://cordaria.com.br/_nuxt/img/public-agencies-horizontal-logo.fac1f52.png)
 
 ## Equipe
 <p>
@@ -90,12 +89,12 @@ As seguintes ferramentas usadas neste projeto:
 ## :checkered_flag: Iniciando ##
 
 ### Rode sem a necessidade de instalar
-Acesse -> [**https://cordaria.com.br**](https://cordaria.com.br). Caso tenhas interesse em colaborar com o desenvolvimento, peço favor que entre em contato conosco. Serás bem vinda sua colaboração!
+Acesse -> [**https://lusacramento.github.io/cordariaapp**](https://lusacramento.github.io/cordariaapp). Caso tenhas interesse em colaborar com o desenvolvimento, peço favor que entre em contato conosco. Serás bem vinda sua colaboração!
 
 ## :white_check_mark: Compilando ##
 
 
-Antes de inciar &#xa0 :checkered_flag:, você precisa ter [Git](https://git-scm.com) e [Node](https://nodejs.org/en/) instalados (Documentação em inglês).
+Antes de inciar :checkered_flag:, você precisa ter [Git](https://git-scm.com) e [Node](https://nodejs.org/en/) instalados (Documentação em inglês).
 
 
 
@@ -112,17 +111,21 @@ $ yarn
 # Rode o projeto
 $ yarn run dev
 
-# The server will initialize in the <http://localhost:3000>
+# O servidor iniciará em <http://localhost:3000>
 ```
 <br>
 
-## :memo: License ##
+## :keyboard: Contribuindo ##
+Estamos em processo de atualização de versão framework Nuxt, de v2 para v3 em um repositório a parte. Caso haja interesse, em contribuir, mande uma mensagem inbox! 
+
+
+
+## :memo: Licença ##
 
 Este projeto esta sobre licença do MIT. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
-Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/lusacramento" target="_blank">lusacramento</a>
+Construído com :heart: by <a href="https://github.com/lusacramento" target="_blank">lusacramento</a>
 
-&#xa0;
 
 <a href="#top">Voltar ao início</a>
