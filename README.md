@@ -12,8 +12,7 @@
   <a href="#sparkles-recursos">Recursos</a> &#xa0; | &#xa0;
   <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-compilando">Compilando</a> &#xa0; | &#xa0;
-   &#xa0; | &#xa0;
+  <a href="#white_check_mark-compilando">Compilando</a> &#xa0; | &#xa0; 
   <a href="#keyboard-contribuindo">Contribuindo</a> &#xa0; | &#xa0;
   <a href="#memo-licença">Licença</a> &#xa0; | &#xa0;
   <a href="https://github.com/lusacramento" target="_blank">Autor</a>
@@ -40,8 +39,6 @@ A pesquisa “Cordaria – Desenvolvimento de aplicação web para iniciação �
 Utilizando meus conhecimentos de uma década como professor e alguns anos de desenvolvedor web, implementei uma aplicação para prática de exercícios básicos de violão e guitarra baseada em alguns métodos já experienciados por mim enquanto discente e docente. Com isso, Cordaria pretende ampliar as possibilidades metodológicas do ensino prático destes instrumentos num cenário EAD e oferecer uma oportunidade diferente para iniciação da arte do fazer musical, além de incentivar programadores e professores a pensar novas formas de aprendizagem.
 
 Esta pesquisa foi possível devido ao apoio da Lei Emergencial de Incentivo à Cultura – Lei Aldir Blanc, Governo Federal, Ministério do Turismo e Secretaria Especial de Cultura, através da aprovação no Edital LAB no 14/2020 – “Seleção de Bolsistas para as Áreas Artísticas Técnicas e de Produção Cultural” promovido pela Secretaria de Cultura e Turismo de Minas Gerais – SECULT. 
-
-![Patrocínio](https://cordaria.com.br/_nuxt/img/public-agencies-horizontal-logo.fac1f52.png)
 
 ## Equipe
 <p>
