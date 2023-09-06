@@ -1,0 +1,147 @@
+{
+    "cavacoMap": [
+        [
+            {
+                "name": "cavaco",
+                "baseUrl": "/Cordaria/audios/cavaco/",
+                "note": "C1",
+                "enharmony": "null",
+                "tablature": "metronome-high-bip",
+                "stringsNumber": 4
+            },
+            {
+                "note": "C0",
+                "enharmony": "null",
+                "tablature": "metronome-low-bip"
+            }
+        ],
+        [
+            {
+                "note": "D5",
+                "enharmony": "null",
+                "tablature": "10",
+                "10": "D5"
+            },
+            {
+                "note": "D#5",
+                "enharmony": "Eb5",
+                "tablature": "11",
+                "11": "D#5"
+            },
+            {
+                "note": "E5",
+                "enharmony": "null",
+                "tablature": "12",
+                "12": "E5"
+            },
+            {
+                "note": "F5",
+                "enharmony": "null",
+                "tablature": "13",
+                "13": "F5"
+            },
+            {
+                "note": "F#5",
+                "enharmony": "Gb5",
+                "tablature": "14",
+                "14": "F#5"
+            }
+        ],
+        [
+            {
+                "note": "B4",
+                "enharmony": "null",
+                "tablature": "20",
+                "20": "B4"
+            },
+            {
+                "note": "C5",
+                "enharmony": "null",
+                "tablature": "21",
+                "21": "C5"
+            },
+            {
+                "note": "C#5",
+                "enharmony": "Db5",
+                "tablature": "22",
+                "22": "C#5"
+            },
+            {
+                "note": "D5",
+                "enharmony": "null",
+                "tablature": "23",
+                "23": "D5"
+            },
+            {
+                "note": "D#5",
+                "enharmony": "Eb5",
+                "tablature": "24",
+                "24": "D#5"
+            }
+        ],
+        [
+            {
+                "note": "G4",
+                "enharmony": "null",
+                "tablature": "30",
+                "30": "G4"
+            },
+            {
+                "note": "G#4",
+                "enharmony": "Ab4",
+                "tablature": "31",
+                "31": "G#4"
+            },
+            {
+                "note": "A4",
+                "enharmony": "null",
+                "tablature": "32",
+                "32": "A4"
+            },
+            {
+                "note": "A#4",
+                "enharmony": "Bb4",
+                "tablature": "33",
+                "33": "A#4"
+            },
+            {
+                "note": "B4",
+                "enharmony": "null",
+                "tablature": "34",
+                "34": "B4"
+            }
+        ],
+        [
+            {
+                "note": "D4",
+                "enharmony": "null",
+                "tablature": "40",
+                "40": "D4"
+            },
+            {
+                "note": "D#4",
+                "enharmony": "Eb4",
+                "tablature": "41",
+                "41": "D#4"
+            },
+            {
+                "note": "E4",
+                "enharmony": "null",
+                "tablature": "42",
+                "42": "E4"
+            },
+            {
+                "note": "F4",
+                "enharmony": "null",
+                "tablature": "43",
+                "43": "F4"
+            },
+            {
+                "note": "F#4",
+                "enharmony": "Gb4",
+                "tablature": "44",
+                "44": "F#4"
+            }
+        ]
+    ]
+}

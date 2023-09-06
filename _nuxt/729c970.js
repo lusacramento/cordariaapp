@@ -1,0 +1,2 @@
+/*! For license information please see LICENSES */
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{503:function(n,c,o){"use strict";o.d(c,"a",(function(){return e})),o.d(c,"b",(function(){return f}));var e={prefix:"fas",iconName:"play",icon:[448,512,[],"f04b","M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"]},f={prefix:"fas",iconName:"stop",icon:[448,512,[],"f04d","M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"]}}}]);

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: https://lusacramento.github.io/Cordaria/sitemap.xml
