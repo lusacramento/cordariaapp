@@ -1,11 +1,11 @@
 <div align="center" id="top"> 
-  <img src="https://cordaria.com.br/_nuxt/img/logo-cordaria_escura_new.png" href="https://cordaria.com.br" height= "270" alt="Cordaria" />
+  <img src="./assets/imgs/logo-cordaria_escura_new.png" height= "270" alt="logo-cordaria" />
 
   &#xa0;
 
 </div>
 
-<h1 align="center"><a href="https://cordaria.com.br">Já praticou Hoje?</a></h1>
+<h1 align="center"><a href="https://lusacramento.github.io/cordariaapp">Já praticou Hoje?</a></h1>
 
 <p align="center">
   <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
@@ -90,7 +90,7 @@ As seguintes ferramentas usadas neste projeto:
 ## :checkered_flag: Iniciando ##
 
 ### Rode sem a necessidade de instalar
-Acesse -> [**https://cordaria.com.br**](https://cordaria.com.br). Caso tenhas interesse em colaborar com o desenvolvimento, peço favor que entre em contato conosco. Serás bem vinda sua colaboração!
+Acesse -> [**https://lusacramento.github.io/cordariaapp**](https://lusacramento.github.io/cordariaapp). Caso tenhas interesse em colaborar com o desenvolvimento, peço favor que entre em contato conosco. Serás bem vinda sua colaboração!
 
 ## :white_check_mark: Compilando ##
 
@@ -121,7 +121,7 @@ $ yarn run dev
 Este projeto esta sobre licença do MIT. Para mais detalhes veja o arquivo da [LICENÇA](LICENSE.md).
 
 
-Construído com &#xa0 :heart: &#xa0 by <a href="https://github.com/lusacramento" target="_blank">lusacramento</a>
+Construído com :heart: by <a href="https://github.com/lusacramento" target="_blank">lusacramento</a>
 
 &#xa0;
 
