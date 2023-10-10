@@ -38,12 +38,7 @@
           <button
             v-if="isVisibleStopButton"
             type="button"
-            class="
-              btn btn-danger btn-controls
-              d-flex
-              align-items-center
-              justify-content-center
-            "
+            class="btn btn-danger btn-controls d-flex align-items-center justify-content-center"
             @click="stop(true)"
           >
             <font-awesome-icon class="fa fa-code stop" :icon="iconStop" />
@@ -96,19 +91,19 @@ export default {
     ScoreTerminal,
   },
   async asyncData({ $http }) {
-    const tips = await $http.$get('./Cordaria/json/tips.json')
-    const lessons = await $http.$get('./Cordaria/json/lessons.json')
-    const deck = await $http.$get('./Cordaria/json/deck.json')
+    const tips = await $http.$get('./cordariaapp/json/tips.json')
+    const lessons = await $http.$get('./cordariaapp/json/lessons.json')
+    const deck = await $http.$get('./cordariaapp/json/deck.json')
     const acousticGuitar = await $http.$get(
-      './Cordaria/json/acoustic-guitar.json'
+      './cordariaapp/json/acoustic-guitar.json'
     )
     const eletricGuitar = await $http.$get(
-      './Cordaria/json/eletric-guitar.json'
+      './cordariaapp/json/eletric-guitar.json'
     )
-    const cavaco = await $http.$get('./Cordaria/json/cavaco.json')
-    const bass = await $http.$get('./Cordaria/json/bass.json')
+    const cavaco = await $http.$get('./cordariaapp/json/cavaco.json')
+    const bass = await $http.$get('./cordariaapp/json/bass.json')
     const settingsNav = await $http.$get(
-      './Cordaria/json/instrument-settings.json'
+      './cordariaapp/json/instrument-settings.json'
     )
 
     return {
