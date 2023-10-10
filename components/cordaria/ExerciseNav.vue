@@ -2,12 +2,7 @@
 <template>
   <form class="container-fluid form-row justify-content-center">
     <div
-      class="
-        form-group
-        col-6 col-lg-12
-        justify-self-center justify-content-center
-        select-instrument
-      "
+      class="form-group col-6 col-lg-12 justify-self-center justify-content-center select-instrument"
     >
       <label for="select-instrument-mode" class="form-label"
         >Instrumento
@@ -21,11 +16,13 @@
         <option :value="set.guitars.acoustic.name">
           {{ set.guitars.acoustic.label }}
         </option>
-        <option :value="set.cavaco.name">{{ set.cavaco.label }}</option>
+        <option disabled :value="set.cavaco.name">
+          {{ set.cavaco.label }}
+        </option>
         <option :value="set.guitars.electric.name">
           {{ set.guitars.electric.label }}
         </option>
-        <option :value="set.bass.name">{{ set.bass.label }}</option>
+        <option disabled :value="set.bass.name">{{ set.bass.label }}</option>
       </select>
     </div>
 
@@ -147,12 +144,7 @@
         <button
           v-if="isVisibleButtonPlay"
           type="button"
-          class="
-            btn btn-success btn-controls
-            d-flex
-            align-items-center
-            justify-content-center
-          "
+          class="btn btn-success btn-controls d-flex align-items-center justify-content-center"
           @click="sendProps"
         >
           <font-awesome-icon class="fa fa-code" :icon="iconPlay" />
